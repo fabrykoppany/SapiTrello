@@ -84,11 +84,13 @@ void writeToFile(USER user){
     fclose(file);
 }
 
-USER readFile(const char* fileName){
+USER readFile(USER user){
+    char *fileName = getFileName(user);
+
     FILE *fin = fopen(fileName, "rb");
 
-    if (fileName == NULL){
-        printf("ERROR: There is no such user.");
+    if (fin == NULL){
+        printf("ERROR: There is no such user2.");
     }
 
     int length;
@@ -114,30 +116,30 @@ USER readFile(const char* fileName){
     char *secondName = (char *) malloc((length) * sizeof(char));
     fread(secondName, sizeof(char), length, fin);*/
 
-    fclose(fin);
-
-    USER user;
+    USER user2;
     char *readString;
 
     readString = strtok(userDetails, " ");
-    user.username = (char *) calloc(strlen(readString), sizeof(char));
-    strcpy(user.username, readString);
+    user2.username = (char *) calloc(strlen(readString), sizeof(char));
+    strcpy(user2.username, readString);
 
     readString = strtok(NULL, " ");
-    user.passowrd = (char *) calloc(strlen(readString), sizeof(char));
-    strcpy(user.passowrd, readString);
+    user2.passowrd = (char *) calloc(strlen(readString), sizeof(char));
+    strcpy(user2.passowrd, readString);
 
     readString = strtok(NULL, " ");
-    user.firstName = (char *) calloc(strlen(readString), sizeof(char));
-    strcpy(user.firstName, readString);
+    user2.firstName = (char *) calloc(strlen(readString), sizeof(char));
+    strcpy(user2.firstName, readString);
 
     readString = strtok(NULL, " ");
-    user.secondName = (char *) calloc(strlen(readString), sizeof(char));
-    strcpy(user.secondName, readString);
+    user2.secondName = (char *) calloc(strlen(readString), sizeof(char));
+    strcpy(user2.secondName, readString);
 
     //printf("%s", userDetails);
 
     //printf("%s %s %s %s", username, password, firstName, secondName);
 
-    return user;
+    fclose(fin);
+
+    return user2;
 }

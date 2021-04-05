@@ -49,8 +49,8 @@ void mainMenu(){
     printf("Please type in your choice followed by an Enter: ");
     scanf("%i", &choice);
     switch (choice) {
-        case 1: registerMenu();
-        case 2: loginMenu(); break;
+        case 2: registerMenu();
+        case 1: loginMenu(); break;
     }
 }
 

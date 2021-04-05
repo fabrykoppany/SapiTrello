@@ -45,7 +45,7 @@ void loginMenu(){
     user.username = getUsernameLogin();
     user.passowrd = getPassword();
 
-    USER testUser = readFile(user.username);
+    USER testUser = readFile(user);
 
     if (strcmp(user.passowrd, testUser.passowrd) != 0){
         printf("Password doesn't match!");

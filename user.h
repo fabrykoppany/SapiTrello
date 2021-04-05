@@ -5,6 +5,11 @@
 #ifndef PROJECT_01_USER_H
 #define PROJECT_01_USER_H
 
+typedef struct{
+    char *username, *passowrd;
+    char *firstName, *secondName;
+}USER;
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -12,11 +17,6 @@
 #include <conio.h>
 #include "register.h"
 #include "login.h"
-
-typedef struct{
-    char *username, *passowrd;
-    char *firstName, *secondName;
-}USER;
 
 char* getUsername();
 bool checkSpecialCharacters(const char*);

@@ -5,7 +5,7 @@
 #include "register.h"
 
 char* generatePassword(){
-    char *password = (char *) malloc(16 * sizeof(char));
+    char *password = (char *) calloc(16, sizeof(char));
 
     if (password == NULL){
         printf("Error allocating memory!\n");
@@ -80,6 +80,6 @@ void registerMenu(){
     system("cls");
 
     USER user = createNewUser();
+    printf("|->Your automatically generated password: %s\n", user.passowrd);
     writeToFile(user);
-    printf("|->Your automatically generated password: %s", user.passowrd);
 }

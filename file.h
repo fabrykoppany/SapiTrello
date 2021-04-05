@@ -14,6 +14,6 @@
 char* getFileName(USER user);
 //void createFileForWriting(USER user);
 void writeToFile(USER user);
-USER readFile(const char* fileName);
+USER readFile(USER user);
 
 #endif //PROJECT_01_FILE_H
