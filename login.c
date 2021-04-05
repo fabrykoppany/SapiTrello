@@ -40,17 +40,42 @@ char *getPassword(){
 void loginMenu(){
     system("cls");
 
+    printf("LOGIN\n\n");
+
     USER user;
+    int choice;
 
     user.username = getUsernameLogin();
+
+    while (!fileExists(user)){
+        printf("|->ERROR: No such user. Please try again!\n");
+        user.username = getUsernameLogin();
+    }
+
     user.passowrd = getPassword();
 
     USER testUser = readFile(user);
 
-    if (strcmp(user.passowrd, testUser.passowrd) != 0){
-        printf("Password doesn't match!");
-        return;
+    while (strcmp(user.passowrd, testUser.passowrd) != 0){
+        choice = 0;
+        printf("|->ERROR: Password doesn't match! Please try again.\n");
+        printf("|->If you want to change your password, press 1 followed by an ENTER.\n");
+        scanf("%i", &choice);
+
+        switch (choice) {
+            case 1: newPassword(&testUser); testUser = readFile(user); loginMenu(); break;
+            default: user.passowrd = getPassword();
+        }
     }
 
     printf("Well done!");
+}
+
+void newPassword(USER *user){
+    user->passowrd = generatePassword();
+
+    writeToFile(*user);
+
+    printf("Your new automatically generated password is: %s", user->passowrd);
+    getch();
 }

@@ -37,6 +37,12 @@ USER createNewUser(){
     USER newUser;
 
     newUser.username = getUsername();
+
+    while (fileExists(newUser)){
+        printf("|->ERROR: This username is already taken. Please try something different.\n");
+        newUser.username = getUsername();
+    }
+
     newUser.passowrd = generatePassword();
     newUser.firstName = getFirstName();
     newUser.secondName = getSecondName();
@@ -78,6 +84,8 @@ char *getSecondName(){
 
 void registerMenu(){
     system("cls");
+
+    printf("REGISTER\n\n");
 
     USER user = createNewUser();
     printf("|->Your automatically generated password: %s\n", user.passowrd);

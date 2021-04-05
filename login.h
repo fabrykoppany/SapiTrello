@@ -14,5 +14,6 @@
 
 char *getPassword();
 void loginMenu();
+void newPassword(USER *user);
 
 #endif //PROJECT_01_LOGIN_H

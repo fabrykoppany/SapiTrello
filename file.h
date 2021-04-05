@@ -15,5 +15,6 @@ char* getFileName(USER user);
 //void createFileForWriting(USER user);
 void writeToFile(USER user);
 USER readFile(USER user);
+bool fileExists(USER user);
 
 #endif //PROJECT_01_FILE_H

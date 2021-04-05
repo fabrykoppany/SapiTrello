@@ -15,6 +15,7 @@ typedef struct{
 #include <stdbool.h>
 #include <string.h>
 #include <conio.h>
+#include <dos.h>
 #include "register.h"
 #include "login.h"
 

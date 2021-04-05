@@ -89,10 +89,6 @@ USER readFile(USER user){
 
     FILE *fin = fopen(fileName, "rb");
 
-    if (fin == NULL){
-        printf("ERROR: There is no such user2.");
-    }
-
     int length;
 
     fread(&length, sizeof(int), 1, fin);
@@ -142,4 +138,17 @@ USER readFile(USER user){
     fclose(fin);
 
     return user2;
+}
+
+bool fileExists(USER user){
+    char *fileName = getFileName(user);
+
+    FILE *file;
+
+    if ((file = fopen(fileName, "rb"))){
+        fclose(file);
+        return true;
+    }
+
+    return false;
 }
