@@ -4,7 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/file.c" "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/cmake-build-debug/CMakeFiles/project_01.dir/file.c.obj"
+  "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/login.c" "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/cmake-build-debug/CMakeFiles/project_01.dir/login.c.obj"
   "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/main.c" "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/cmake-build-debug/CMakeFiles/project_01.dir/main.c.obj"
+  "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/register.c" "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/cmake-build-debug/CMakeFiles/project_01.dir/register.c.obj"
+  "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/user.c" "C:/Users/koppa/Documents/Adatsz. & alg/Projektek/project_01/cmake-build-debug/CMakeFiles/project_01.dir/user.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

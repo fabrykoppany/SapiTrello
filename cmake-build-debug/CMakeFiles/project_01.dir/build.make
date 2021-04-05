@@ -89,19 +89,79 @@ CMakeFiles/project_01.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_01.dir/main.c.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\main.c" -o CMakeFiles\project_01.dir\main.c.s
 
+CMakeFiles/project_01.dir/register.c.obj: CMakeFiles/project_01.dir/flags.make
+CMakeFiles/project_01.dir/register.c.obj: ../register.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/project_01.dir/register.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\project_01.dir\register.c.obj   -c "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\register.c"
+
+CMakeFiles/project_01.dir/register.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_01.dir/register.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\register.c" > CMakeFiles\project_01.dir\register.c.i
+
+CMakeFiles/project_01.dir/register.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_01.dir/register.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\register.c" -o CMakeFiles\project_01.dir\register.c.s
+
+CMakeFiles/project_01.dir/user.c.obj: CMakeFiles/project_01.dir/flags.make
+CMakeFiles/project_01.dir/user.c.obj: ../user.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/project_01.dir/user.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\project_01.dir\user.c.obj   -c "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\user.c"
+
+CMakeFiles/project_01.dir/user.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_01.dir/user.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\user.c" > CMakeFiles\project_01.dir\user.c.i
+
+CMakeFiles/project_01.dir/user.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_01.dir/user.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\user.c" -o CMakeFiles\project_01.dir\user.c.s
+
+CMakeFiles/project_01.dir/file.c.obj: CMakeFiles/project_01.dir/flags.make
+CMakeFiles/project_01.dir/file.c.obj: ../file.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/project_01.dir/file.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\project_01.dir\file.c.obj   -c "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\file.c"
+
+CMakeFiles/project_01.dir/file.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_01.dir/file.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\file.c" > CMakeFiles\project_01.dir\file.c.i
+
+CMakeFiles/project_01.dir/file.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_01.dir/file.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\file.c" -o CMakeFiles\project_01.dir\file.c.s
+
+CMakeFiles/project_01.dir/login.c.obj: CMakeFiles/project_01.dir/flags.make
+CMakeFiles/project_01.dir/login.c.obj: ../login.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/project_01.dir/login.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\project_01.dir\login.c.obj   -c "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\login.c"
+
+CMakeFiles/project_01.dir/login.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/project_01.dir/login.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\login.c" > CMakeFiles\project_01.dir\login.c.i
+
+CMakeFiles/project_01.dir/login.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/project_01.dir/login.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\login.c" -o CMakeFiles\project_01.dir\login.c.s
+
 # Object files for target project_01
 project_01_OBJECTS = \
-"CMakeFiles/project_01.dir/main.c.obj"
+"CMakeFiles/project_01.dir/main.c.obj" \
+"CMakeFiles/project_01.dir/register.c.obj" \
+"CMakeFiles/project_01.dir/user.c.obj" \
+"CMakeFiles/project_01.dir/file.c.obj" \
+"CMakeFiles/project_01.dir/login.c.obj"
 
 # External object files for target project_01
 project_01_EXTERNAL_OBJECTS =
 
 project_01.exe: CMakeFiles/project_01.dir/main.c.obj
+project_01.exe: CMakeFiles/project_01.dir/register.c.obj
+project_01.exe: CMakeFiles/project_01.dir/user.c.obj
+project_01.exe: CMakeFiles/project_01.dir/file.c.obj
+project_01.exe: CMakeFiles/project_01.dir/login.c.obj
 project_01.exe: CMakeFiles/project_01.dir/build.make
 project_01.exe: CMakeFiles/project_01.dir/linklibs.rsp
 project_01.exe: CMakeFiles/project_01.dir/objects1.rsp
 project_01.exe: CMakeFiles/project_01.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable project_01.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\koppa\Documents\Adatsz. & alg\Projektek\project_01\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable project_01.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\project_01.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

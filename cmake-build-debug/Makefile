@@ -142,6 +142,60 @@ project_01/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/build
 .PHONY : project_01/fast
 
+file.obj: file.c.obj
+
+.PHONY : file.obj
+
+# target to build an object file
+file.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/file.c.obj
+.PHONY : file.c.obj
+
+file.i: file.c.i
+
+.PHONY : file.i
+
+# target to preprocess a source file
+file.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/file.c.i
+.PHONY : file.c.i
+
+file.s: file.c.s
+
+.PHONY : file.s
+
+# target to generate assembly for a file
+file.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/file.c.s
+.PHONY : file.c.s
+
+login.obj: login.c.obj
+
+.PHONY : login.obj
+
+# target to build an object file
+login.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/login.c.obj
+.PHONY : login.c.obj
+
+login.i: login.c.i
+
+.PHONY : login.i
+
+# target to preprocess a source file
+login.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/login.c.i
+.PHONY : login.c.i
+
+login.s: login.c.s
+
+.PHONY : login.s
+
+# target to generate assembly for a file
+login.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/login.c.s
+.PHONY : login.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -169,6 +223,60 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/main.c.s
 .PHONY : main.c.s
 
+register.obj: register.c.obj
+
+.PHONY : register.obj
+
+# target to build an object file
+register.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/register.c.obj
+.PHONY : register.c.obj
+
+register.i: register.c.i
+
+.PHONY : register.i
+
+# target to preprocess a source file
+register.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/register.c.i
+.PHONY : register.c.i
+
+register.s: register.c.s
+
+.PHONY : register.s
+
+# target to generate assembly for a file
+register.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/register.c.s
+.PHONY : register.c.s
+
+user.obj: user.c.obj
+
+.PHONY : user.obj
+
+# target to build an object file
+user.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/user.c.obj
+.PHONY : user.c.obj
+
+user.i: user.c.i
+
+.PHONY : user.i
+
+# target to preprocess a source file
+user.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/user.c.i
+.PHONY : user.c.i
+
+user.s: user.c.s
+
+.PHONY : user.s
+
+# target to generate assembly for a file
+user.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\project_01.dir\build.make CMakeFiles/project_01.dir/user.c.s
+.PHONY : user.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -178,9 +286,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... project_01
+	@echo ... file.obj
+	@echo ... file.i
+	@echo ... file.s
+	@echo ... login.obj
+	@echo ... login.i
+	@echo ... login.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... register.obj
+	@echo ... register.i
+	@echo ... register.s
+	@echo ... user.obj
+	@echo ... user.i
+	@echo ... user.s
 .PHONY : help
 
 

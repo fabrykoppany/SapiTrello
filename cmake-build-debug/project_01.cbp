@@ -74,7 +74,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/file.c">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/file.h">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/login.c">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/login.h">
+			<Option target="project_01"/>
+		</Unit>
 		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/main.c">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/register.c">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/register.h">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/user.c">
+			<Option target="project_01"/>
+		</Unit>
+		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/user.h">
 			<Option target="project_01"/>
 		</Unit>
 		<Unit filename="C:/Users/koppa/Documents/Adatsz. &amp; alg/Projektek/project_01/CMakeLists.txt">
