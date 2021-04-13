@@ -5,10 +5,11 @@
 #ifndef PROJECT_01_USER_H
 #define PROJECT_01_USER_H
 
-typedef struct{
-    char *username, *passowrd;
+typedef struct USER {
+    unsigned int id;
+    char *username, *password;
     char *firstName, *secondName;
-}USER;
+} USER;
 
 #include <stdio.h>
 #include <stdlib.h>

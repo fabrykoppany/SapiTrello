@@ -3,6 +3,7 @@
 //
 
 #include "register.h"
+#include "user_db.h"
 
 char* generatePassword(){
     char *password = (char *) calloc(16, sizeof(char));
@@ -33,24 +34,31 @@ char* generatePassword(){
     return password;
 }
 
-USER createNewUser(){
-    USER newUser;
+USER *createNewUser() {
+    char *username = getUsername();
 
-    newUser.username = getUsername();
-
-    while (fileExists(newUser)){
+    while (userExists(username)){
         printf("|->ERROR: This username is already taken. Please try something different.\n");
-        newUser.username = getUsername();
+        free(username);
+        username = getUsername();
     }
 
-    newUser.passowrd = generatePassword();
-    newUser.firstName = getFirstName();
-    newUser.secondName = getSecondName();
+    USER *newUser = (USER *) malloc(sizeof(USER));
+
+    if (newUser == NULL) {
+        printf("Could not allocate memory!\n");
+        return NULL;
+    }
+
+    newUser->username = username;
+    newUser->password = generatePassword();
+    newUser->firstName = getFirstName();
+    newUser->secondName = getSecondName();
+
+    saveUser(newUser);
 
     return newUser;
 }
-
-
 
 char *getFirstName(){
     char *firstName = (char *) malloc(30 * sizeof(char));
@@ -62,8 +70,6 @@ char *getFirstName(){
 
     printf("|->Your first name: ");
     scanf("%s", firstName);
-
-    firstName[0] -= 32;
 
     return firstName;
 }
@@ -79,7 +85,7 @@ char *getSecondName(){
     printf("|->Your second name: ");
     scanf("%s", secondName);
 
-    return strupr(secondName);
+    return secondName;
 }
 
 void registerMenu(){
@@ -87,7 +93,6 @@ void registerMenu(){
 
     printf("REGISTER\n\n");
 
-    USER user = createNewUser();
-    printf("|->Your automatically generated password: %s\n", user.passowrd);
-    writeToFile(user);
+    USER *user = createNewUser();
+    printf("|->Your automatically generated password: %s\n", user->password);
 }

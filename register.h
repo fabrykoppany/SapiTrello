@@ -13,7 +13,7 @@
 #include "file.h"
 
 char* generatePassword();
-USER createNewUser();
+USER *createNewUser();
 char* getFirstName();
 char* getSecondName();
 void registerMenu();

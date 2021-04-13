@@ -3,6 +3,7 @@
 //
 
 #include "login.h"
+#include "user_db.h"
 
 char* getUsernameLogin(){
     char *username = (char *) malloc(30 * sizeof(int));
@@ -41,41 +42,49 @@ void loginMenu(){
     system("cls");
 
     printf("LOGIN\n\n");
-
-    USER user;
     int choice;
 
-    user.username = getUsernameLogin();
+    char *username = getUsernameLogin();
 
-    while (!fileExists(user)){
+    while (!userExists(username)){
         printf("|->ERROR: No such user. Please try again!\n");
-        user.username = getUsernameLogin();
+        free(username);
+        username = getUsernameLogin();
     }
 
-    user.passowrd = getPassword();
+    USER *testUser = loadUser(username);
+    free(username);
 
-    USER testUser = readFile(user);
+    if (testUser == NULL) {
+        printf("Something has gone wrong.\n");
+        return;
+    }
 
-    while (strcmp(user.passowrd, testUser.passowrd) != 0){
-        choice = 0;
+    char *password = getPassword();
+
+    while (strcmp(testUser->password, password) != 0) {
+        free(password);
+
+        int choice = 0;
         printf("|->ERROR: Password doesn't match! Please try again.\n");
         printf("|->If you want to change your password, press 1 followed by an ENTER.\n");
         scanf("%i", &choice);
 
         switch (choice) {
-            case 1: newPassword(&testUser); testUser = readFile(user); loginMenu(); break;
-            default: user.passowrd = getPassword();
+            case 1: newPassword(testUser); loginMenu(); break;
+            default: password = getPassword();
         }
     }
 
+    free(password);
     printf("Well done!");
 }
 
 void newPassword(USER *user){
-    user->passowrd = generatePassword();
+    user->password = generatePassword();
 
-    writeToFile(*user);
+    saveUser(user);
 
-    printf("Your new automatically generated password is: %s", user->passowrd);
+    printf("Your new automatically generated password is: %s", user->password);
     getch();
 }

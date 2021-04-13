@@ -3,6 +3,7 @@
 //
 
 #include "user.h"
+#include "file.h"
 
 char* getUsername(){
     char *username = (char *) malloc(30 * sizeof(int));
