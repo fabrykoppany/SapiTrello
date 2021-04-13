@@ -36,6 +36,33 @@ void renameBoard(USER *user, BOARD *board) {
     boardMenu(user, board);
 }
 
+void printBoardUsers(BOARD *board) {
+    for (size_t i = 0; i < board->users.count; ++i) {
+        USER *user = loadUserById(board->users.ids[i]);
+
+        if (user != NULL) {
+            printf("%llu. %s\n", i + 1, user->username);
+            free(user);
+        }
+    }
+}
+
+void boardUsers(USER *user, BOARD *board) {
+    clearScreen();
+
+    printf("=====================\n");
+    printf("BOARD USER MANAGEMENT\n");;
+    printf("=====================\n");
+    printf("-- %s -- \n\n", board->name);
+
+    printf("Users currently contributing to board:\n");
+    printBoardUsers(board);
+
+    printf("\nPress any key to go back...\n");
+    getch();
+    boardMenu(user, board);
+}
+
 void boardMenu(USER *user, BOARD *board) {
     clearScreen();
 
@@ -45,6 +72,7 @@ void boardMenu(USER *user, BOARD *board) {
     printf("-- %s -- \n\n", board->name);
 
     printf("1. Rename board\n");
+    printf("2. List users\n");
     printf("0. Back to board list\n");
 
     int choice;
@@ -52,6 +80,7 @@ void boardMenu(USER *user, BOARD *board) {
 
     switch (choice) {
         case 1: renameBoard(user, board); return;
+        case 2: boardUsers(user, board); return;
         case 0: listBoards(user); return;
         default: boardMenu(user, board); return;
     }

@@ -67,3 +67,13 @@ USER *loadUser(char *username) {
     fclose(file);
     return user;
 }
+
+USER *loadUserById(id_t id) {
+    char *username = getUsernameFromId(id);
+
+    if (username == NULL) {
+        return NULL;
+    }
+
+    return loadUser(username);
+}

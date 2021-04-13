@@ -50,7 +50,7 @@ USER *createNewUser() {
         return NULL;
     }
 
-    newUser->id = getNewUserId();
+    newUser->id = getNewUserId(username);
     newUser->username = username;
     newUser->password = generatePassword();
     newUser->firstName = getFirstName();

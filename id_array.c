@@ -48,6 +48,21 @@ bool addToIdArray(id_array_t *array, id_t id) {
     return true;
 }
 
+bool removeFromIdArray(id_array_t *array, id_t id) {
+    for (size_t i = 0; i < array->count; ++i) {
+        if (array->ids[i] == id) {
+            for (size_t j = i; j < (array->count - 1); ++j) {
+                array->ids[j] = array->ids[j + 1];
+            }
+
+            array->ids = (id_t *) realloc(array->ids, (--array->count) * sizeof(id_t));
+            return array->ids != NULL;
+        }
+    }
+
+    return false;
+}
+
 bool isIdArrayEmpty(id_array_t *array) {
     return array->count == 0;
 }
