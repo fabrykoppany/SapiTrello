@@ -19,5 +19,6 @@ typedef struct BOARD {
 
 bool addUserToBoard(USER *user, BOARD *board);
 BOARD *createNewBoard(char *name, USER *user);
+bool changeBoardName(BOARD *board, char *name);
 
 #endif //PROJECT_01_BOARD_H

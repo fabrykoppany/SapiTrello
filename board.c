@@ -25,3 +25,8 @@ BOARD *createNewBoard(char *name, USER *user) {
     addBoardToUser(user, board);
     return board;
 }
+
+bool changeBoardName(BOARD *board, char *name) {
+    board->name = name;
+    return saveBoard(board);
+}

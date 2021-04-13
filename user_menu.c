@@ -19,11 +19,8 @@ void createBoard(USER *user) {
     title = reallocateBuffer(title);
 
     BOARD *board = createNewBoard(title, user);
-    userMenu(user);
-}
-
-void boardMenu(USER *user, BOARD *board) {
-    // TODO.
+    boardMenu(user, board);
+    free(board);
 }
 
 void listBoards(USER *user) {
@@ -54,13 +51,14 @@ void listBoards(USER *user) {
     int choice;
     scanf("%i", &choice);
 
-    if (choice != 0 && choice <= user->boards.count) {
-        BOARD *board = loadBoard(user->boards.ids[choice - 1]);
-        boardMenu(user, board);
+    if (choice == 0 || choice > user->boards.count) {
+        userMenu(user);
         return;
     }
 
-    userMenu(user);
+    BOARD *board = loadBoard(user->boards.ids[choice - 1]);
+    boardMenu(user, board);
+    free(board);
 }
 
 void userMenu(USER *user) {
