@@ -8,6 +8,7 @@
 #include "user.h"
 #include "main.h"
 #include "utils.h"
+#include "board_db.h"
 
 void userMenu(USER *user);
 

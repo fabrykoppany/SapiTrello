@@ -16,8 +16,50 @@ void createBoard(USER *user) {
 
     printf("What would you like to call your new board?\n");
     scanf(" %[^\n]", title);
+    title = reallocateBuffer(title);
 
     BOARD *board = createNewBoard(title, user);
+    userMenu(user);
+}
+
+void boardMenu(USER *user, BOARD *board) {
+    // TODO.
+}
+
+void listBoards(USER *user) {
+    clearScreen();
+
+    if (isIdArrayEmpty(&user->boards)) {
+        printf("You are not currently active in any boards.\n");
+        printf("Press any key to continue...\n");
+
+        getch();
+        userMenu(user);
+        return;
+    }
+
+    printf("Which board would you like to browse to?\n\n");
+
+    for (size_t i = 0; i < user->boards.count; ++i) {
+        BOARD *board = loadBoard(user->boards.ids[i]);
+
+        if (board != NULL) {
+            printf("%llu. %s\n", i + 1, board->name);
+            free(board);
+        }
+    }
+
+    printf("0. Back to menu\n");
+
+    int choice;
+    scanf("%i", &choice);
+
+    if (choice != 0 && choice <= user->boards.count) {
+        BOARD *board = loadBoard(user->boards.ids[choice - 1]);
+        boardMenu(user, board);
+        return;
+    }
+
     userMenu(user);
 }
 
@@ -41,7 +83,7 @@ void userMenu(USER *user) {
     switch (choice) {
         case 0: mainMenu(); break;
         case 1: createBoard(user); break;
-        case 2: loginMenu(); break;
+        case 2: listBoards(user); break;
         default: printf("|->ERROR: Your choice didn't match any command. Please try again."); getch(); userMenu(user);
     }
 }

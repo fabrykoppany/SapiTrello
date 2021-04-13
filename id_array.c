@@ -47,3 +47,7 @@ bool addToIdArray(id_array_t *array, id_t id) {
     array->ids[array->count++] = id;
     return true;
 }
+
+bool isIdArrayEmpty(id_array_t *array) {
+    return array->count == 0;
+}
