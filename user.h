@@ -12,8 +12,10 @@
 #include <conio.h>
 #include <dos.h>
 
+#include "types.h"
+
 typedef struct USER {
-    unsigned int id;
+    id_t id;
     char *username, *password;
     char *firstName, *secondName;
 } USER;

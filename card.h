@@ -5,6 +5,8 @@
 #ifndef PROJECT_01_CARD_H
 #define PROJECT_01_CARD_H
 
+#include "types.h"
+
 enum CardState {
     TO_DO,
     DOING,
@@ -12,12 +14,12 @@ enum CardState {
 };
 
 typedef struct {
-    unsigned int id;
-    unsigned int boardId;
+    id_t id;
+    id_t boardId;
     char *title;
     char *description;
     enum CardState state;
-    unsigned int userId;
+    id_t userId;
 } CARD;
 
 #endif //PROJECT_01_CARD_H

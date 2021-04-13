@@ -27,7 +27,7 @@ bool saveUser(USER *user) {
         return false;
     }
 
-    fwrite(&(user->id), sizeof(unsigned int), 1, file);
+    fwrite(&(user->id), sizeof(id_t), 1, file);
     writeStringToFile(file, user->username);
     writeStringToFile(file, user->password);
     writeStringToFile(file, user->firstName);
@@ -56,7 +56,7 @@ USER *loadUser(char *username) {
         return NULL;
     }
 
-    fread(&(user->id), sizeof(unsigned int), 1, file);
+    fread(&(user->id), sizeof(id_t), 1, file);
     readStringToField(file, &(user->username));
     readStringToField(file, &(user->password));
     readStringToField(file, &(user->firstName));
