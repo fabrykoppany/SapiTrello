@@ -40,3 +40,10 @@ size_t getNewUserId() {
     saveGlobalDatabase();
     return value;
 }
+
+size_t getNewBoardId() {
+    size_t value = (globalDatabase.boardCount++);
+
+    saveGlobalDatabase();
+    return value;
+}

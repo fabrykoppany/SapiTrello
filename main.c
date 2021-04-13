@@ -22,7 +22,7 @@ void mainMenu() {
 
 int main() {
     if (!loadGlobalDatabase()) {
-        return;
+        return -1;
     }
 
     mkdir("Users");

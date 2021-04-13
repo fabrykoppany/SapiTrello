@@ -7,6 +7,7 @@
 
 #include "user.h"
 #include "main.h"
+#include "utils.h"
 
 void userMenu(USER *user);
 

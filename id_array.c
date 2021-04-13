@@ -31,3 +31,19 @@ void writeIdArrayToFile(FILE *file, id_array_t *array) {
         fwrite(array->ids, sizeof(id_t), array->count, file);
     }
 }
+
+bool addToIdArray(id_array_t *array, id_t id) {
+    if (array->count == 0) {
+        array->ids = (id_t *) malloc(sizeof(id_t));
+    } else {
+        array->ids = (id_t *) realloc(array->ids, (array->count + 1) * sizeof(id_t));
+    }
+
+    if (array->ids == NULL) {
+        printf("Could not allocate memory!\n");
+        return false;
+    }
+
+    array->ids[array->count++] = id;
+    return true;
+}

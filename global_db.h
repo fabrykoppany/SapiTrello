@@ -20,5 +20,6 @@ global_db_t globalDatabase;
 bool loadGlobalDatabase();
 bool saveGlobalDatabase();
 size_t getNewUserId();
+size_t getNewBoardId();
 
 #endif //PROJECT_01_GLOBAL_DB_H
