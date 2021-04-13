@@ -12,6 +12,7 @@
 #include "user.h"
 #include "file.h"
 #include "user_db.h"
+#include "global_db.h"
 #include "ui.h"
 
 char* generatePassword();

@@ -33,8 +33,7 @@ bool saveBoard(BOARD *board) {
 
     fwrite(&(board->id), sizeof(id_t), 1, file);
     writeStringToFile(file, board->name);
-    fwrite(&(board->userCount), sizeof(unsigned int), 1, file);
-    fwrite(board->userIds, sizeof(id_t), board->userCount, file);
+    writeIdArrayToFile(file, &(board->users));
 
     fclose(file);
     free(fileName);
@@ -61,17 +60,12 @@ BOARD *loadBoard(id_t id) {
 
     fread(&(board->id), sizeof(id_t), 1, file);
     readStringToField(file, &(board->name));
-    fread(&(board->userCount), sizeof(unsigned int), 1, file);
 
-    board->userIds = (id_t *) malloc(board->userCount * sizeof(id_t));
-
-    if (board->userIds == NULL) {
-        printf("Could not allocate memory!\n");
+    if (!readIdArrayFromFile(file, &(board->users))) {
         free(board);
         return NULL;
     }
 
-    fread(board->userIds, sizeof(id_t), board->userCount, file);
     fclose(file);
     return board;
 }

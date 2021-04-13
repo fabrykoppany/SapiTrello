@@ -21,6 +21,10 @@ void mainMenu() {
 }
 
 int main() {
+    if (!loadGlobalDatabase()) {
+        return;
+    }
+
     mkdir("Users");
     mkdir("Boards");
     mainMenu();

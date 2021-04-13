@@ -7,6 +7,7 @@
 
 #include "board.h"
 #include "file.h"
+#include "id_array.h"
 
 char *getBoardFilename(id_t id);
 bool boardExists(id_t id);

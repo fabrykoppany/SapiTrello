@@ -13,11 +13,13 @@
 #include <dos.h>
 
 #include "types.h"
+#include "id_array.h"
 
 typedef struct USER {
     id_t id;
     char *username, *password;
     char *firstName, *secondName;
+    id_array_t boards;
 } USER;
 
 #include "register.h"

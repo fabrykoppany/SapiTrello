@@ -7,5 +7,8 @@
 #include "register.h"
 #include "file.h"
 #include "ui.h"
+#include "global_db.h"
+
+void mainMenu();
 
 #endif

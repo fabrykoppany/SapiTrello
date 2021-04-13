@@ -6,12 +6,12 @@
 #define PROJECT_01_BOARD_H
 
 #include "types.h"
+#include "id_array.h"
 
 typedef struct {
     id_t id;
     char *name;
-    unsigned int userCount;
-    id_t *userIds;
+    id_array_t users;
 } BOARD;
 
 #endif //PROJECT_01_BOARD_H

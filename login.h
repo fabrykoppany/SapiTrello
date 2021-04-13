@@ -14,6 +14,7 @@
 #include "file.h"
 #include "user_db.h"
 #include "ui.h"
+#include "user_menu.h"
 
 char *getPassword();
 void loginMenu();

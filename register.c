@@ -50,10 +50,13 @@ USER *createNewUser() {
         return NULL;
     }
 
+    newUser->id = getNewUserId();
     newUser->username = username;
     newUser->password = generatePassword();
     newUser->firstName = getFirstName();
     newUser->secondName = getSecondName();
+    newUser->boards.count = 0;
+    newUser->boards.ids = NULL;
 
     saveUser(newUser);
 

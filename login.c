@@ -51,17 +51,17 @@ void loginMenu() {
         username = getUsernameLogin();
     }
 
-    USER *testUser = loadUser(username);
+    USER *user = loadUser(username);
     free(username);
 
-    if (testUser == NULL) {
+    if (user == NULL) {
         printf("Something has gone wrong.\n");
         return;
     }
 
     char *password = getPassword();
 
-    while (!isCorrectPassword(testUser, password)) {
+    while (!isCorrectPassword(user, password)) {
         free(password);
 
         int choice = 0;
@@ -70,13 +70,14 @@ void loginMenu() {
         scanf("%i", &choice);
 
         switch (choice) {
-            case 1: newPassword(testUser); loginMenu(); return;
+            case 1: newPassword(user); loginMenu(); return;
             default: password = getPassword();
         }
     }
 
     free(password);
     printf("Well done!");
+    userMenu(user);
 }
 
 void newPassword(USER *user) {

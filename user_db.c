@@ -32,6 +32,7 @@ bool saveUser(USER *user) {
     writeStringToFile(file, user->password);
     writeStringToFile(file, user->firstName);
     writeStringToFile(file, user->secondName);
+    writeIdArrayToFile(file, &(user->boards));
 
     fclose(file);
     free(fileName);
@@ -61,6 +62,8 @@ USER *loadUser(char *username) {
     readStringToField(file, &(user->password));
     readStringToField(file, &(user->firstName));
     readStringToField(file, &(user->secondName));
+    readIdArrayFromFile(file, &(user->boards));
+
     fclose(file);
     return user;
 }
