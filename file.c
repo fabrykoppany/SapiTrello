@@ -22,13 +22,13 @@ char* getPrefixedFilename(const char *directory, char *filename){
     return fileName;
 }
 
-inline void writeStringToFile(FILE *file, char *str) {
+void writeStringToFile(FILE *file, char *str) {
     size_t length = strlen(str);
     fwrite(&length, sizeof(size_t), 1, file);
     fwrite(str, sizeof(char), length, file);
 }
 
-inline char *readStringFromFile(FILE *file) {
+char *readStringFromFile(FILE *file) {
     size_t length;
     fread(&length, sizeof(size_t), 1, file);
 
@@ -44,7 +44,7 @@ inline char *readStringFromFile(FILE *file) {
     return str;
 }
 
-inline bool readStringToField(FILE *file, char **field) {
+bool readStringToField(FILE *file, char **field) {
     char *str = readStringFromFile(file);
 
     if (str == NULL) {
@@ -53,6 +53,19 @@ inline bool readStringToField(FILE *file, char **field) {
 
     (*field) = str;
     return true;
+}
+
+char *unsignedIntToString(unsigned int value) {
+    int length = snprintf(NULL, 0, "%u", value);
+    char *str = (char *) malloc(length + 1);
+
+    if (str == NULL) {
+        printf("Could not allocate memory!\n");
+        return NULL;
+    }
+
+    snprintf(str, length + 1, "%d", value);
+    return str;
 }
 
 bool fileExists(char *filename) {

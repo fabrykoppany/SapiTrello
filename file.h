@@ -16,5 +16,6 @@ void writeStringToFile(FILE *file, char *str);
 char *readStringFromFile(FILE *file);
 bool readStringToField(FILE *file, char **field);
 bool fileExists(char *filename);
+char *unsignedIntToString(unsigned int value);
 
 #endif //PROJECT_01_FILE_H

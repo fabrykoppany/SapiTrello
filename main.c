@@ -22,6 +22,7 @@ void mainMenu() {
 
 int main() {
     mkdir("Users");
+    mkdir("Boards");
     mainMenu();
     return 0;
 }
