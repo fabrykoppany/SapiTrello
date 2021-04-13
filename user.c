@@ -27,3 +27,7 @@ bool checkSpecialCharacters(const char* username){
 bool addBoardToUser(USER *user, BOARD *board) {
     return addToIdArray(&(user->boards), board->id) && saveUser(user);
 }
+
+bool removeBoardFromUser(USER *user, BOARD *board) {
+    return removeFromIdArray(&(user->boards), board->id) && saveUser(user);
+}

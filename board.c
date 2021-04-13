@@ -8,6 +8,10 @@ bool addUserToBoard(USER *user, BOARD *board) {
     return addToIdArray(&(board->users), user->id) && saveBoard(board);
 }
 
+bool removeUserFromBoard(USER *user, BOARD *board) {
+    return removeFromIdArray(&(board->users), user->id) && saveBoard(board);
+}
+
 BOARD *createNewBoard(char *name, USER *user) {
     BOARD *board = (BOARD *) malloc(sizeof(BOARD));
 

@@ -18,6 +18,7 @@ typedef struct BOARD {
 #include "board_db.h"
 
 bool addUserToBoard(USER *user, BOARD *board);
+bool removeUserFromBoard(USER *user, BOARD *board);
 BOARD *createNewBoard(char *name, USER *user);
 bool changeBoardName(BOARD *board, char *name);
 

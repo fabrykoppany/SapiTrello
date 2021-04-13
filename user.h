@@ -31,5 +31,6 @@ bool isCorrectPassword(USER *user, char *password);
 bool checkSpecialCharacters(const char *username);
 
 bool addBoardToUser(USER *user, BOARD *board);
+bool removeBoardFromUser(USER *user, BOARD *board);
 
 #endif //PROJECT_01_USER_H

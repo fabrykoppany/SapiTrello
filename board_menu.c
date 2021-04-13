@@ -63,6 +63,32 @@ void boardUsers(USER *user, BOARD *board) {
     boardMenu(user, board);
 }
 
+void leaveBoard(USER *user, BOARD *board) {
+    clearScreen();
+
+    printf("*** WARNING!!! ***\n");
+    printf("You are about to leave the following board:\n");
+    printf("- %s\n", board->name);
+    printf("\nThis may be a permanent decision.\nAre you sure you want to leave this board?\n\n");
+    printf("1. Yes, leave the group\n");
+    printf("0. No, head back\n");
+
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice != 1) {
+        boardMenu(user, board);
+        return;
+    }
+
+    if (!removeUserFromBoard(user, board) || !removeBoardFromUser(user, board)) {
+        printf("Could not leave board!\n");
+        getch();
+    }
+
+    listBoards(user);
+}
+
 void boardMenu(USER *user, BOARD *board) {
     clearScreen();
 
@@ -73,6 +99,7 @@ void boardMenu(USER *user, BOARD *board) {
 
     printf("1. Rename board\n");
     printf("2. List users\n");
+    printf("3. Leave board indefinitely\n");
     printf("0. Back to board list\n");
 
     int choice;
@@ -81,6 +108,7 @@ void boardMenu(USER *user, BOARD *board) {
     switch (choice) {
         case 1: renameBoard(user, board); return;
         case 2: boardUsers(user, board); return;
+        case 3: leaveBoard(user, board); return;
         case 0: listBoards(user); return;
         default: boardMenu(user, board); return;
     }

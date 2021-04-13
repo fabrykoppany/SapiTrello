@@ -51,11 +51,20 @@ bool addToIdArray(id_array_t *array, id_t id) {
 bool removeFromIdArray(id_array_t *array, id_t id) {
     for (size_t i = 0; i < array->count; ++i) {
         if (array->ids[i] == id) {
-            for (size_t j = i; j < (array->count - 1); ++j) {
+            --array->count;
+
+            for (size_t j = i; j < array->count; ++j) {
                 array->ids[j] = array->ids[j + 1];
             }
 
-            array->ids = (id_t *) realloc(array->ids, (--array->count) * sizeof(id_t));
+            if (array->count == 0) {
+                // Special case: no elements left.
+                free(array->ids);
+                array->ids = NULL;
+                return true;
+            }
+
+            array->ids = (id_t *) realloc(array->ids, array->count * sizeof(id_t));
             return array->ids != NULL;
         }
     }
