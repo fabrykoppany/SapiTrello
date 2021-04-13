@@ -32,5 +32,6 @@ bool checkSpecialCharacters(const char *username);
 
 bool addBoardToUser(USER *user, BOARD *board);
 bool removeBoardFromUser(USER *user, BOARD *board);
+bool isSameUser(USER *a, USER *b);
 
 #endif //PROJECT_01_USER_H

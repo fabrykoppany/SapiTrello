@@ -63,6 +63,47 @@ void boardUsers(USER *user, BOARD *board) {
     boardMenu(user, board);
 }
 
+void kickUser(USER *user, BOARD *board) {
+    clearScreen();
+
+    printf("=====================\n");
+    printf("BOARD USER MANAGEMENT\n");;
+    printf("=====================\n");
+    printf("-- %s -- \n\n", board->name);
+
+    printf("Which user would you like to kick from this board?\n\n");
+    printf("Users currently contributing to board:\n");
+    printBoardUsers(board);
+    printf("0. None, head back\n");
+
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice == 0 || choice > board->users.count) {
+        boardMenu(user, board);
+        return;
+    }
+
+    USER *boardUser = loadUserById(board->users.ids[choice - 1]);
+
+    if (boardUser == NULL) {
+        printf("Could not load the requested user!\n");
+        getch();
+    } else if (!removeUserFromBoard(user, board) || !removeBoardFromUser(user, board)) {
+        printf("Could not remove the requested user from the board.\n");
+        getch();
+    }
+
+    if (isSameUser(user, boardUser)) {
+        // If we've kicked ourselves...
+        listBoards(user);
+        return;
+    }
+
+    // Bring the user back to the kick menu
+    kickUser(user, board);
+}
+
 void leaveBoard(USER *user, BOARD *board) {
     clearScreen();
 
@@ -99,7 +140,8 @@ void boardMenu(USER *user, BOARD *board) {
 
     printf("1. Rename board\n");
     printf("2. List users\n");
-    printf("3. Leave board indefinitely\n");
+    printf("3. Kick user from board\n");
+    printf("4. Leave board indefinitely\n");
     printf("0. Back to board list\n");
 
     int choice;
@@ -108,7 +150,8 @@ void boardMenu(USER *user, BOARD *board) {
     switch (choice) {
         case 1: renameBoard(user, board); return;
         case 2: boardUsers(user, board); return;
-        case 3: leaveBoard(user, board); return;
+        case 3: kickUser(user, board); return;
+        case 4: leaveBoard(user, board); return;
         case 0: listBoards(user); return;
         default: boardMenu(user, board); return;
     }

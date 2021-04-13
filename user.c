@@ -31,3 +31,7 @@ bool addBoardToUser(USER *user, BOARD *board) {
 bool removeBoardFromUser(USER *user, BOARD *board) {
     return removeFromIdArray(&(user->boards), board->id) && saveUser(user);
 }
+
+bool isSameUser(USER *a, USER *b) {
+    return a->id == b->id;
+}

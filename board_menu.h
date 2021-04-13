@@ -15,5 +15,6 @@ void boardMenu(USER *user, BOARD *board);
 void boardUsers(USER *user, BOARD *board);
 void printBoardUsers(BOARD *board);
 void leaveBoard(USER *user, BOARD *board);
+void kickUser(USER *user, BOARD *board);
 
 #endif //PROJECT_01_BOARD_MENU_H
