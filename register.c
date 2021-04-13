@@ -5,7 +5,7 @@
 #include "register.h"
 #include "user_db.h"
 
-char* generatePassword(){
+char* generatePassword() {
     char *password = (char *) calloc(16, sizeof(char));
 
     if (password == NULL){
@@ -60,7 +60,7 @@ USER *createNewUser() {
     return newUser;
 }
 
-char *getFirstName(){
+char *getFirstName() {
     char *firstName = (char *) malloc(30 * sizeof(char));
 
     if (firstName == NULL){
@@ -74,7 +74,7 @@ char *getFirstName(){
     return firstName;
 }
 
-char *getSecondName(){
+char *getSecondName() {
     char *secondName = (char *) malloc(30 * sizeof(char));
 
     if (secondName == NULL){
@@ -88,8 +88,8 @@ char *getSecondName(){
     return secondName;
 }
 
-void registerMenu(){
-    system("cls");
+void registerMenu() {
+    clearScreen();
 
     printf("REGISTER\n\n");
 

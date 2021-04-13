@@ -12,7 +12,6 @@
 #include "user.h"
 
 char *getPrefixedFilename(const char *prefix, char *filename);
-//void createFileForWriting(USER user);
 void writeStringToFile(FILE *file, char *str);
 char *readStringFromFile(FILE *file);
 bool readStringToField(FILE *file, char **field);

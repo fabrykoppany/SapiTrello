@@ -5,24 +5,24 @@
 #ifndef PROJECT_01_USER_H
 #define PROJECT_01_USER_H
 
-typedef struct USER {
-    unsigned int id;
-    char *username, *password;
-    char *firstName, *secondName;
-} USER;
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include <conio.h>
 #include <dos.h>
+
+typedef struct USER {
+    unsigned int id;
+    char *username, *password;
+    char *firstName, *secondName;
+} USER;
+
 #include "register.h"
 #include "login.h"
 
-char* getUsername();
-bool checkSpecialCharacters(const char*);
-void mainMenu();
+bool isCorrectPassword(USER *user, char *password);
+bool checkSpecialCharacters(const char *username);
 //USER allocateMemoryForUser();
 
 #endif //PROJECT_01_USER_H

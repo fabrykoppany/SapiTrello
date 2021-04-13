@@ -3,9 +3,8 @@
 //
 
 #include "login.h"
-#include "user_db.h"
 
-char* getUsernameLogin(){
+char* getUsernameLogin() {
     char *username = (char *) malloc(30 * sizeof(int));
 
     if (username == NULL){
@@ -24,7 +23,7 @@ char* getUsernameLogin(){
     return username;
 }
 
-char *getPassword(){
+char *getPassword() {
     char *password = (char *) malloc(16 * sizeof(char));
 
     if (password == NULL){
@@ -38,8 +37,8 @@ char *getPassword(){
     return password;
 }
 
-void loginMenu(){
-    system("cls");
+void loginMenu() {
+    clearScreen();
 
     printf("LOGIN\n\n");
     int choice;
@@ -62,7 +61,7 @@ void loginMenu(){
 
     char *password = getPassword();
 
-    while (strcmp(testUser->password, password) != 0) {
+    while (!isCorrectPassword(testUser, password)) {
         free(password);
 
         int choice = 0;
@@ -71,7 +70,7 @@ void loginMenu(){
         scanf("%i", &choice);
 
         switch (choice) {
-            case 1: newPassword(testUser); loginMenu(); break;
+            case 1: newPassword(testUser); loginMenu(); return;
             default: password = getPassword();
         }
     }
@@ -80,7 +79,7 @@ void loginMenu(){
     printf("Well done!");
 }
 
-void newPassword(USER *user){
+void newPassword(USER *user) {
     user->password = generatePassword();
 
     saveUser(user);
