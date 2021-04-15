@@ -70,16 +70,84 @@ void createCard(USER *user, BOARD *board) {
     cardMenu(user, board, card);
 }
 
+void changeTitle(char *title, USER *user, BOARD *board, CARD *card){
+    free(card->title);
+    card->title = title;
+    saveBoard(board);
+}
+
 void renameCard(USER *user, BOARD *board, CARD *card) {
     // KOPPANY
+    char *card_name = (char *) malloc(255 * sizeof(char));
+
+    if (card_name == NULL){
+        printf("Error allocating memory!!!\n");
+        return;
+    }
+
+    printf("What would you like to rename %s card to: ", card->title);
+    scanf(" %[^\n]", card_name); card_name = reallocateBuffer(card_name);
+
+    changeTitle(card_name, user, board, card);
+
+    cardMenu(user, board, card);
+}
+
+void changeText(char *text, USER *user, BOARD *board, CARD *card){
+    free(card->description); card->description = text;
+
+    saveBoard(board);
+}
+
+void changeStatus(int status, USER *user, BOARD *board, CARD *card){
+    card->state = status;
+
+    saveBoard(board);
+
+    cardMenu(user, board, card);
 }
 
 void changeCardStatus(USER *user, BOARD *board, CARD *card) {
     // KOPPANY
+    int choice;
+
+    printf("The previous status was: %s\n", getCardProgress(card));
+
+    printf("New status can be: \n");
+    for (int i = 0; i < 3; ++i){
+        if (i != card->state){
+            printf("%i. %s\n", i + 1, cardStateAsString(i));
+        }
+    }
+
+    printf("Please choose the card's new status: ");
+    scanf("%i", &choice); --choice;
+
+    while (choice == card->state){
+        printf("This is the card's current state! Please try again: ");
+        scanf("%i", &choice);
+    }
+
+    cardMenu(user, board, card);
 }
 
 void changeDescription(USER *user, BOARD *board, CARD *card) {
     // KOPPANY
+    char *card_description = (char *) malloc(2000 * sizeof(char));
+
+    if (card_description == NULL){
+        printf("Error allocating memory!!!\n");
+        return;
+    }
+
+    printf("The previous description was: \n%s\n", card->description);
+
+    printf("New description: ");
+    scanf(" %[^\n]", card_description); card_description = reallocateBuffer(card_description);
+
+    changeText(card_description, user, board, card);
+
+    cardMenu(user, board, card);
 }
 
 void deleteCard(USER *user, BOARD *board, CARD *card) {
@@ -98,6 +166,23 @@ void abandonCard(USER *user, BOARD *board, CARD *card) {
     // KOPPANY
     // Ask user if he wants to abandon the card
     // If yes, card->userId = INVALID_ID (that's all)
+    int choice;
+
+    printf("Would you like to leave?\n|->1. Yes.\n|->2. No\n.");
+    scanf("%i", &choice);
+
+    while (choice != 1 && choice != 2){
+        printf("Error! This choice is not possible. Try again: ");
+        scanf("%i", &choice);
+    }
+
+    if (choice == 1){
+        card->userId = INVALID_ID;
+        saveBoard(board);
+        boardMenu(user, board);
+    } else{
+        cardMenu(user, board, card);
+    }
 }
 
 void takeCardOver(USER *user, BOARD *board, CARD *card) {

@@ -98,4 +98,5 @@ void registerMenu() {
 
     USER *user = createNewUser();
     printf("|->Your automatically generated password: %s\n", user->password);
+    getch();
 }
