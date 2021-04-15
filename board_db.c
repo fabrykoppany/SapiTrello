@@ -42,7 +42,7 @@ bool saveBoard(BOARD *board) {
 }
 
 BOARD *loadBoard(id_t id) {
-    BOARD *board = (BOARD *) malloc(sizeof(BOARD));
+    BOARD *board = (BOARD *) calloc(1, sizeof(BOARD));
 
     if (board == NULL) {
         printf("Could not allocate memory!\n");
@@ -70,4 +70,8 @@ BOARD *loadBoard(id_t id) {
 
     fclose(file);
     return board;
+}
+
+id_t getNextCardId(BOARD *board) {
+    return board->cards.count;
 }

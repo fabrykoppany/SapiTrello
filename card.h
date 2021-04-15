@@ -31,5 +31,6 @@ typedef struct {
 
 CARD *readCardFromFile(FILE *file, id_t id);
 void writeCardToFile(FILE *file, CARD *card);
+CARD *createNewCard(id_t id, id_t userId, char *title, char *description);
 
 #endif //PROJECT_01_CARD_H

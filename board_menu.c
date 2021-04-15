@@ -206,14 +206,6 @@ void leaveBoard(USER *user, BOARD *board) {
     listBoards(user);
 }
 
-void browseCards(USER *user, BOARD *board) {
-
-}
-
-void createCard(USER *user, BOARD *board) {
-
-}
-
 void boardMenu(USER *user, BOARD *board) {
     clearScreen();
 

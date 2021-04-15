@@ -43,7 +43,7 @@ bool addToCardArray(card_array_t *array, CARD *card) {
     if (array->count == 0) {
         array->cards = (CARD **) malloc(sizeof(CARD *));
     } else {
-        array->cards = (CARD **) realloc(array->cards, (array->count + 1) * sizeof(id_t));
+        array->cards = (CARD **) realloc(array->cards, (array->count + 1) * sizeof(CARD *));
     }
 
     if (array->cards == NULL) {

@@ -32,3 +32,7 @@ bool changeBoardName(BOARD *board, char *name) {
     board->name = name;
     return saveBoard(board);
 }
+
+bool addCardToBoard(BOARD *board, CARD *card) {
+    return addToCardArray(&(board->cards), card) && saveBoard(board);
+}

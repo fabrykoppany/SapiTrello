@@ -27,3 +27,19 @@ void writeCardToFile(FILE *file, CARD *card) {
     fwrite(&(card->userId), sizeof(id_t), 1, file);
     writeIdArrayToFile(file, &(card->previousUserIds));
 }
+
+CARD *createNewCard(id_t id, id_t userId, char *title, char *description) {
+    CARD *card = (CARD *) calloc(1, sizeof(CARD));
+
+    if (card == NULL) {
+        return NULL;
+    }
+
+    card->id = id;
+    card->userId = userId;
+    card->title = title;
+    card->description = description;
+    card->state = TO_DO;
+    addToIdArray(&(card->previousUserIds), userId);
+    return card;
+}
