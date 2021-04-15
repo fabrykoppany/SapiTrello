@@ -45,9 +45,7 @@ CARD *createNewCard(id_t id, id_t userId, char *title, char *description) {
     return card;
 }
 
-void printShortCard(CARD *card) {
-    printf("%s, worked on by ", card->title);
-
+void printCardUser(CARD *card) {
     if (card->userId == INVALID_ID) {
         printf("no one");
         return;
@@ -60,4 +58,27 @@ void printShortCard(CARD *card) {
     } else {
         printShortUser(user);
     }
+}
+
+void printShortCard(CARD *card) {
+    printf("%s, worked on by ", card->title);
+    printCardUser(card);
+    printf(" [%s]", getCardProgress(card));
+}
+
+const char *cardStateAsString(enum CardState state) {
+    switch (state) {
+        case TO_DO:
+            return "TO DO";
+        case DOING:
+            return "IN PROGRESS";
+        case DONE:
+            return "COMPLETE";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+const char *getCardProgress(CARD *card) {
+    return cardStateAsString(card->state);
 }
