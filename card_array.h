@@ -24,5 +24,6 @@ bool addToCardArray(card_array_t *array, CARD *card);
 bool removeFromCardArray(card_array_t *array, CARD *card);
 bool isCardArrayEmpty(card_array_t *array);
 bool cardArrayContainsElement(card_array_t *array, CARD *card);
+void freeCardArray(card_array_t array);
 
 #endif //PROJECT_01_CARD_ARRAY_H

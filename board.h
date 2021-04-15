@@ -24,5 +24,6 @@ BOARD *createNewBoard(char *name, USER *user);
 bool changeBoardName(BOARD *board, char *name);
 id_t getNextCardId(BOARD *board);
 bool addCardToBoard(BOARD *board, CARD *card);
+void freeBoard(BOARD *board);
 
 #endif //PROJECT_01_BOARD_H

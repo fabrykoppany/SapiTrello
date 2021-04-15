@@ -22,5 +22,6 @@ bool addToIdArray(id_array_t *array, id_t id);
 bool removeFromIdArray(id_array_t *array, id_t id);
 bool isIdArrayEmpty(id_array_t *array);
 bool idArrayContainsElement(id_array_t *array, id_t id);
+void freeIdArray(id_array_t array);
 
 #endif //PROJECT_01_ID_ARRAY_H

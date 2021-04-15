@@ -44,7 +44,7 @@ void printBoardUsers(BOARD *board) {
             printf("%llu. ", i + 1);
             printShortUser(user);
             printf("\n");
-            free(user);
+            freeUser(user);
         }
     }
 }
@@ -60,7 +60,7 @@ void printSoughtUsers(IdEntry *head) {
             printf("%u. ", ++id);
             printShortUser(user);
             printf("\n");
-            free(user);
+            freeUser(user);
         }
 
         p = p->next;

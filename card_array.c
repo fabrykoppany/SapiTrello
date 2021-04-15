@@ -92,3 +92,11 @@ bool cardArrayContainsElement(card_array_t *array, CARD *card) {
 
     return false;
 }
+
+void freeCardArray(card_array_t array) {
+    for (size_t i = 0; i < array.count; ++i) {
+        freeCard(array.cards[i]);
+    }
+
+    free(array.cards);
+}

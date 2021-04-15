@@ -36,5 +36,6 @@ void printCardUser(CARD *card);
 void printShortCard(CARD *card);
 const char *cardStateAsString(enum CardState state);
 const char *getCardProgress(CARD *card);
+void freeCard(CARD *card);
 
 #endif //PROJECT_01_CARD_H

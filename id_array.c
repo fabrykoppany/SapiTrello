@@ -85,3 +85,7 @@ bool idArrayContainsElement(id_array_t *array, id_t id) {
 
     return false;
 }
+
+void freeIdArray(id_array_t array) {
+    free(array.ids);
+}

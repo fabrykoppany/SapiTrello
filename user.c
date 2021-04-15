@@ -39,3 +39,12 @@ bool isSameUser(USER *a, USER *b) {
 void printShortUser(USER *user) {
     printf("%s (%s %s)", user->username, user->firstName, user->secondName);
 }
+
+void freeUser(USER *user) {
+    free(user->username);
+    free(user->password);
+    free(user->firstName);
+    free(user->secondName);
+    freeIdArray(user->boards);
+    free(user);
+}

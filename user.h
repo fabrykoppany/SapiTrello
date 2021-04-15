@@ -35,5 +35,6 @@ bool removeBoardFromUser(USER *user, BOARD *board);
 bool isSameUser(USER *a, USER *b);
 
 void printShortUser(USER *user);
+void freeUser(USER *user);
 
 #endif //PROJECT_01_USER_H

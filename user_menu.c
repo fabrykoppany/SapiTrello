@@ -20,7 +20,7 @@ void createBoard(USER *user) {
 
     BOARD *board = createNewBoard(title, user);
     boardMenu(user, board);
-    free(board);
+    freeBoard(board);
 }
 
 void listBoards(USER *user) {
@@ -42,7 +42,7 @@ void listBoards(USER *user) {
 
         if (board != NULL) {
             printf("%llu. %s\n", i + 1, board->name);
-            free(board);
+            freeBoard(board);
         }
     }
 
@@ -58,7 +58,7 @@ void listBoards(USER *user) {
 
     BOARD *board = loadBoard(user->boards.ids[choice - 1]);
     boardMenu(user, board);
-    free(board);
+    freeBoard(board);
 }
 
 void userMenu(USER *user) {

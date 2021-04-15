@@ -119,10 +119,10 @@ void cardMenu(USER *user, BOARD *board, CARD *card) {
     printf("CARD\n");;
     printf("====\n");
     printf("-- %s -- \n", card->title);
-    printf("-- %s --\n\n", getCardProgress(card));
+    printf("-- %s --\n", getCardProgress(card));
     printf("Owned by: ");
     printCardUser(card);
-    printf("\n");
+    printf("\n\n");
 
     printf("+-+ Short description: +-+\n");
     printf("%s\n\n", card->description);

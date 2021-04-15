@@ -58,6 +58,8 @@ void printCardUser(CARD *card) {
     } else {
         printShortUser(user);
     }
+
+    freeUser(user);
 }
 
 void printShortCard(CARD *card) {
@@ -81,4 +83,11 @@ const char *cardStateAsString(enum CardState state) {
 
 const char *getCardProgress(CARD *card) {
     return cardStateAsString(card->state);
+}
+
+void freeCard(CARD *card) {
+    free(card->title);
+    free(card->description);
+    freeIdArray(card->previousUserIds);
+    free(card);
 }

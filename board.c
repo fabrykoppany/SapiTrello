@@ -36,3 +36,10 @@ bool changeBoardName(BOARD *board, char *name) {
 bool addCardToBoard(BOARD *board, CARD *card) {
     return addToCardArray(&(board->cards), card) && saveBoard(board);
 }
+
+void freeBoard(BOARD *board) {
+    free(board->name);
+    freeIdArray(board->users);
+    freeCardArray(board->cards);
+    free(board);
+}
