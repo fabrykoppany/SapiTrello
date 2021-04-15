@@ -19,5 +19,7 @@ void printSoughtUsers(IdEntry *head);
 void leaveBoard(USER *user, BOARD *board);
 void kickUser(USER *user, BOARD *board);
 void inviteUser(USER *user, BOARD *board);
+void browseCards(USER *user, BOARD *board);
+void createCard(USER *user, BOARD *board);
 
 #endif //PROJECT_01_BOARD_MENU_H

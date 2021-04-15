@@ -5,13 +5,6 @@
 #ifndef PROJECT_01_USER_H
 #define PROJECT_01_USER_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-#include <conio.h>
-#include <dos.h>
-
 #include "types.h"
 #include "id_array.h"
 
@@ -21,6 +14,13 @@ typedef struct USER {
     char *firstName, *secondName;
     id_array_t boards;
 } USER;
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#include <conio.h>
+#include <dos.h>
 
 #include "board.h"
 

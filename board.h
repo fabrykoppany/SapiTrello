@@ -7,15 +7,16 @@
 
 #include "types.h"
 #include "id_array.h"
+#include "card_array.h"
 
 typedef struct BOARD {
     id_t id;
     char *name;
     id_array_t users;
+    card_array_t cards;
 } BOARD;
 
 #include "user.h"
-#include "board_db.h"
 
 bool addUserToBoard(USER *user, BOARD *board);
 bool removeUserFromBoard(USER *user, BOARD *board);

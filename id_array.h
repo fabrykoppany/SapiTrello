@@ -6,15 +6,15 @@
 #define PROJECT_01_ID_ARRAY_H
 
 #include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-
 #include "types.h"
 
 typedef struct id_array_t {
     size_t count;
     id_t *ids;
 } id_array_t;
+
+#include <stdbool.h>
+#include <stdlib.h>
 
 bool readIdArrayFromFile(FILE *file, id_array_t *array);
 void writeIdArrayToFile(FILE *file, id_array_t *array);

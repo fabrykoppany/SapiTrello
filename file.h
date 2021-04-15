@@ -9,7 +9,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "user.h"
+
+#include "types.h"
 
 char *getPrefixedFilename(const char *prefix, char *filename);
 void writeStringToFile(FILE *file, char *str);

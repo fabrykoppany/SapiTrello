@@ -13,7 +13,7 @@ bool removeUserFromBoard(USER *user, BOARD *board) {
 }
 
 BOARD *createNewBoard(char *name, USER *user) {
-    BOARD *board = (BOARD *) malloc(sizeof(BOARD));
+    BOARD *board = (BOARD *) calloc(1, sizeof(BOARD));
 
     if (board == NULL) {
         printf("Could not allocate memory!\n");
@@ -22,8 +22,6 @@ BOARD *createNewBoard(char *name, USER *user) {
 
     board->id = getNewBoardId();
     board->name = name;
-    board->users.count = 0;
-    board->users.ids = NULL;
 
     addUserToBoard(user, board);
     addBoardToUser(user, board);

@@ -206,6 +206,14 @@ void leaveBoard(USER *user, BOARD *board) {
     listBoards(user);
 }
 
+void browseCards(USER *user, BOARD *board) {
+
+}
+
+void createCard(USER *user, BOARD *board) {
+
+}
+
 void boardMenu(USER *user, BOARD *board) {
     clearScreen();
 
@@ -214,22 +222,34 @@ void boardMenu(USER *user, BOARD *board) {
     printf("=====\n");
     printf("-- %s -- \n\n", board->name);
 
-    printf("1. Rename board\n");
-    printf("2. List users\n");
-    printf("3. Invite new user\n");
-    printf("4. Kick user from board\n");
-    printf("5. Leave board indefinitely\n");
+    printf("+-------------+\n");
+    printf("Card Management\n");
+    printf("+-------------+\n");
+    printf("1. Browse cards\n");
+    printf("2. Create new card\n");
+    printf("\n");
+
+    printf("+-------------+\n");
+    printf("User Management\n");
+    printf("+-------------+\n");
+    printf("3. List users\n");
+    printf("4. Rename board\n");
+    printf("5. Invite new user\n");
+    printf("6. Kick user from board\n");
+    printf("7. Leave board indefinitely\n\n");
     printf("0. Back to board list\n");
 
     int choice;
     scanf("%i", &choice);
 
     switch (choice) {
-        case 1: renameBoard(user, board); return;
-        case 2: boardUsers(user, board); return;
-        case 3: inviteUser(user, board); return;
-        case 4: kickUser(user, board); return;
-        case 5: leaveBoard(user, board); return;
+        case 1: browseCards(user, board); return;
+        case 2: createCard(user, board); return;
+        case 3: boardUsers(user, board); return;
+        case 4: renameBoard(user, board); return;
+        case 5: inviteUser(user, board); return;
+        case 6: kickUser(user, board); return;
+        case 7: leaveBoard(user, board); return;
         case 0: listBoards(user); return;
         default: boardMenu(user, board); return;
     }

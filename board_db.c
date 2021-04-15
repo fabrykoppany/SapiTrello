@@ -34,6 +34,7 @@ bool saveBoard(BOARD *board) {
     fwrite(&(board->id), sizeof(id_t), 1, file);
     writeStringToFile(file, board->name);
     writeIdArrayToFile(file, &(board->users));
+    writeCardArrayToFile(file, &(board->cards));
 
     fclose(file);
     free(fileName);
@@ -61,7 +62,8 @@ BOARD *loadBoard(id_t id) {
     fread(&(board->id), sizeof(id_t), 1, file);
     readStringToField(file, &(board->name));
 
-    if (!readIdArrayFromFile(file, &(board->users))) {
+    if (!readIdArrayFromFile(file, &(board->users)) || !readCardArrayFromFile(file, &(board->cards))) {
+        fclose(file);
         free(board);
         return NULL;
     }

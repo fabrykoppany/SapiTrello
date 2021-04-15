@@ -3,7 +3,6 @@
 //
 
 #include "file.h"
-#include "user_db.h"
 
 char* getPrefixedFilename(const char *directory, char *filename){
     int length = strlen(directory) + strlen(filename) + strlen("/.bin");
