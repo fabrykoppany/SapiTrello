@@ -35,3 +35,7 @@ bool removeBoardFromUser(USER *user, BOARD *board) {
 bool isSameUser(USER *a, USER *b) {
     return a->id == b->id;
 }
+
+void printShortUser(USER *user) {
+    printf("%s (%s %s)", user->username, user->firstName, user->secondName);
+}

@@ -34,4 +34,6 @@ bool addBoardToUser(USER *user, BOARD *board);
 bool removeBoardFromUser(USER *user, BOARD *board);
 bool isSameUser(USER *a, USER *b);
 
+void printShortUser(USER *user);
+
 #endif //PROJECT_01_USER_H

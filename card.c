@@ -3,6 +3,7 @@
 //
 
 #include "card.h"
+#include "user_db.h"
 
 CARD *readCardFromFile(FILE *file, id_t id) {
     CARD *card = (CARD *) calloc(1, sizeof(CARD));
@@ -42,4 +43,21 @@ CARD *createNewCard(id_t id, id_t userId, char *title, char *description) {
     card->state = TO_DO;
     addToIdArray(&(card->previousUserIds), userId);
     return card;
+}
+
+void printShortCard(CARD *card) {
+    printf("%s, worked on by ", card->title);
+
+    if (card->userId == INVALID_ID) {
+        printf("no one");
+        return;
+    }
+
+    USER *user = loadUserById(card->userId);
+
+    if (user == NULL) {
+        printf("unknown user");
+    } else {
+        printShortUser(user);
+    }
 }

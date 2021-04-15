@@ -41,7 +41,9 @@ void printBoardUsers(BOARD *board) {
         USER *user = loadUserById(board->users.ids[i]);
 
         if (user != NULL) {
-            printf("%llu. %s\n", i + 1, user->username);
+            printf("%llu. ", i + 1);
+            printShortUser(user);
+            printf("\n");
             free(user);
         }
     }
@@ -55,7 +57,9 @@ void printSoughtUsers(IdEntry *head) {
         USER *user = loadUserById(p->id);
 
         if (user != NULL) {
-            printf("%u. %s\n", ++id, user->username);
+            printf("%u. ", ++id);
+            printShortUser(user);
+            printf("\n");
             free(user);
         }
 

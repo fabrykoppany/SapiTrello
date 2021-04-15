@@ -5,7 +5,39 @@
 #include "card_menu.h"
 
 void browseCards(USER *user, BOARD *board) {
+    clearScreen();
 
+    if (isCardArrayEmpty(&board->cards)) {
+        printf("This board does not have any cards.\n");
+        printf("Press any key to continue...\n");
+
+        getch();
+        boardMenu(user, board);
+        return;
+    }
+
+    printf("Which card would you like to open?\n\n");
+
+    for (size_t i = 0; i < board->cards.count; ++i) {
+        CARD *card = board->cards.cards[i];
+
+        printf("%llu. ", i + 1);
+        printShortCard(card);
+        printf("\n");
+    }
+
+    printf("0. Back to menu\n");
+
+    int choice;
+    scanf("%i", &choice);
+
+    if (choice == 0 || choice > board->cards.count) {
+        boardMenu(user, board);
+        return;
+    }
+
+    CARD *card = board->cards.cards[choice - 1];
+    cardMenu(user, board, card);
 }
 
 void createCard(USER *user, BOARD *board) {
