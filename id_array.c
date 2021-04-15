@@ -75,3 +75,13 @@ bool removeFromIdArray(id_array_t *array, id_t id) {
 bool isIdArrayEmpty(id_array_t *array) {
     return array->count == 0;
 }
+
+bool idArrayContainsElement(id_array_t *array, id_t id) {
+    for (size_t i = 0; i < array->count; ++i) {
+        if (array->ids[i] == id) {
+            return true;
+        }
+    }
+
+    return false;
+}

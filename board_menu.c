@@ -47,6 +47,22 @@ void printBoardUsers(BOARD *board) {
     }
 }
 
+void printSoughtUsers(IdEntry *head) {
+    IdEntry *p = head;
+    id_t id = 0;
+
+    while (p != NULL) {
+        USER *user = loadUserById(p->id);
+
+        if (user != NULL) {
+            printf("%u. %s\n", ++id, user->username);
+            free(user);
+        }
+
+        p = p->next;
+    }
+}
+
 void boardUsers(USER *user, BOARD *board) {
     clearScreen();
 
@@ -89,7 +105,7 @@ void kickUser(USER *user, BOARD *board) {
     if (boardUser == NULL) {
         printf("Could not load the requested user!\n");
         getch();
-    } else if (!removeUserFromBoard(user, board) || !removeBoardFromUser(user, board)) {
+    } else if (!removeUserFromBoard(boardUser, board) || !removeBoardFromUser(boardUser, board)) {
         printf("Could not remove the requested user from the board.\n");
         getch();
     }
@@ -102,6 +118,66 @@ void kickUser(USER *user, BOARD *board) {
 
     // Bring the user back to the kick menu
     kickUser(user, board);
+}
+
+void inviteUser(USER *user, BOARD *board) {
+    clearScreen();
+
+    printf("=====================\n");
+    printf("BOARD USER MANAGEMENT\n");;
+    printf("=====================\n");
+    printf("-- %s -- \n\n", board->name);
+
+    IdEntry *availableUsers = searchForUsersNotInBoard(board);
+
+    if (availableUsers == NULL) {
+        printf("There are no more users available to add to this board.\n");
+        printf("Press any key to continue...\n");
+        getch();
+        boardMenu(user, board);
+        return;
+    }
+
+    printf("Which user would you like to add to this board?\n");
+    printf("Users not currently contributing to board:\n");
+
+    printSoughtUsers(availableUsers);
+
+    printf("0. None, head back\n");
+
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice == 0) {
+        freeIdEntryList(availableUsers);
+        boardMenu(user, board);
+        return;
+    }
+
+    id_t userId = getIdFromList(availableUsers, choice - 1);
+    printf("user id: %u\n", userId);
+    freeIdEntryList(availableUsers);
+
+    if (userId == INVALID_ID) {
+        boardMenu(user, board);
+        return;
+    }
+
+    printf("User id: %u\n", userId);
+    USER *boardUser = loadUserById(userId);
+
+    if (boardUser == NULL) {
+        printf("Could not load the requested user!\n");
+        getch();
+        boardMenu(user, board);
+    } else if (!addUserToBoard(boardUser, board) || !addBoardToUser(boardUser, board)) {
+        printf("Could not remove the requested user from the board.\n");
+        getch();
+        boardMenu(user, board);
+    }
+
+    // Bring the user back to the invite menu
+    inviteUser(user, board);
 }
 
 void leaveBoard(USER *user, BOARD *board) {
@@ -140,8 +216,9 @@ void boardMenu(USER *user, BOARD *board) {
 
     printf("1. Rename board\n");
     printf("2. List users\n");
-    printf("3. Kick user from board\n");
-    printf("4. Leave board indefinitely\n");
+    printf("3. Invite new user\n");
+    printf("4. Kick user from board\n");
+    printf("5. Leave board indefinitely\n");
     printf("0. Back to board list\n");
 
     int choice;
@@ -150,8 +227,9 @@ void boardMenu(USER *user, BOARD *board) {
     switch (choice) {
         case 1: renameBoard(user, board); return;
         case 2: boardUsers(user, board); return;
-        case 3: kickUser(user, board); return;
-        case 4: leaveBoard(user, board); return;
+        case 3: inviteUser(user, board); return;
+        case 4: kickUser(user, board); return;
+        case 5: leaveBoard(user, board); return;
         case 0: listBoards(user); return;
         default: boardMenu(user, board); return;
     }
