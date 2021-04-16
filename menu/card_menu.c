@@ -94,6 +94,8 @@ void browseCardsWithState(USER *user, BOARD *board, enum CardState state) {
 }
 
 void createCard(USER *user, BOARD *board) {
+    clearScreen();
+
     char *title = (char *) malloc(255 * sizeof(char));
 
     if (title == NULL) {
@@ -107,8 +109,6 @@ void createCard(USER *user, BOARD *board) {
         printf("Error allocating memory!\n");
         return;
     }
-
-    clearScreen();
 
     printf("What would you like to call this card?\n");
     scanf(" %[^\n]", title);
@@ -124,6 +124,7 @@ void createCard(USER *user, BOARD *board) {
 }
 
 void renameCard(USER *user, BOARD *board, CARD *card) {
+    clearScreen();
     char *card_name = (char *) malloc(255 * sizeof(char));
 
     if (card_name == NULL) {
@@ -142,6 +143,7 @@ void renameCard(USER *user, BOARD *board, CARD *card) {
 }
 
 void changeCardStatus(USER *user, BOARD *board, CARD *card) {
+    clearScreen();
     int choice;
 
     printf("The previous status was: %s\n", getCardProgress(card));
@@ -173,6 +175,7 @@ void changeCardStatus(USER *user, BOARD *board, CARD *card) {
 }
 
 void changeDescription(USER *user, BOARD *board, CARD *card) {
+    clearScreen();
     char *card_description = (char *) malloc(2000 * sizeof(char));
 
     if (card_description == NULL) {
@@ -279,6 +282,7 @@ void transferCard(USER *user, BOARD *board, CARD *card) {
 }
 
 void abandonCard(USER *user, BOARD *board, CARD *card) {
+    clearScreen();
     int choice;
 
     printf("Would you like to leave?\n|->1. Yes.\n|->2. No.\n");
@@ -299,6 +303,7 @@ void abandonCard(USER *user, BOARD *board, CARD *card) {
 }
 
 void takeCardOver(USER *user, BOARD *board, CARD *card) {
+    clearScreen();
     printf("Would you like to transfer ownership of this card over to yourself?\n\n");
     printf("|->1. Yes!\n");
     printf("|->0. No.\n");
