@@ -70,6 +70,7 @@ void loginMenu() {
 
     char *password = getPassword();
 
+    // Authenticate the user!
     while (!isCorrectPassword(user, password)) {
         free(password);
 

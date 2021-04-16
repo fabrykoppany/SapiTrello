@@ -9,6 +9,7 @@ CARD *readCardFromFile(FILE *file) {
     CARD *card = (CARD *) calloc(1, sizeof(CARD));
 
     if (card == NULL) {
+        printf("Could not allocate memory!\n");
         return NULL;
     }
 
@@ -32,9 +33,13 @@ CARD *createNewCard(id_t userId, char *title, char *description) {
     CARD *card = (CARD *) calloc(1, sizeof(CARD));
 
     if (card == NULL) {
+        printf("Could not allocate memory!\n");
         return NULL;
     }
 
+    // The default state of each card is TO_DO.
+    // By default, the user who creates the card is the
+    // owner of the card.
     card->userId = userId;
     card->title = title;
     card->description = description;
@@ -44,6 +49,7 @@ CARD *createNewCard(id_t userId, char *title, char *description) {
 }
 
 void printCardUser(CARD *card) {
+    // Either there's no user assigned to the card....
     if (card->userId == INVALID_ID) {
         printf("no one");
         return;
@@ -52,8 +58,10 @@ void printCardUser(CARD *card) {
     USER *user = loadUserById(card->userId);
 
     if (user == NULL) {
+        // or we don't know about this specific user...
         printf("unknown user");
     } else {
+        // or we know about the exact user assigned.
         printShortUser(user);
     }
 

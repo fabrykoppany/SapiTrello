@@ -24,7 +24,8 @@ char *getUsername() {
 }
 
 char *generatePassword() {
-    char *password = (char *) calloc(16, sizeof(char));
+    // We'll generate a random 16 character long password.
+    char *password = (char *) calloc(17, sizeof(char));
 
     if (password == NULL) {
         printf("Error allocating memory!\n");
@@ -36,6 +37,7 @@ char *generatePassword() {
     char lowerCaseLetters[26] = "abcdefghijklmnoqprstuvwyzx";
     char upperCaseLetters[26] = "ABCDEFGHIJKLMNOQPRSTUYWVZX";
 
+    // Seed our randmo generator...
     srand(time(0));
 
     for (int i = 0; i < 16; ++i) {
@@ -49,6 +51,7 @@ char *generatePassword() {
         }
     }
 
+    password[16] = '\0';
     return password;
 }
 
@@ -61,22 +64,7 @@ USER *createNewUser() {
         username = getUsername();
     }
 
-    USER *newUser = (USER *) calloc(1, sizeof(USER));
-
-    if (newUser == NULL) {
-        printf("Could not allocate memory!\n");
-        return NULL;
-    }
-
-    newUser->id = getNewUserId(username);
-    newUser->username = username;
-    newUser->password = generatePassword();
-    newUser->firstName = getFirstName();
-    newUser->secondName = getSecondName();
-
-    saveUser(newUser);
-
-    return newUser;
+    return createUser(username, generatePassword(), getFirstName(), getSecondName());
 }
 
 char *getFirstName() {
