@@ -7,7 +7,7 @@
 void createBoard(USER *user) {
     char *title = (char *) malloc(255 * sizeof(char));
 
-    if (title == NULL){
+    if (title == NULL) {
         printf("Error allocating memory!\n");
         return;
     }

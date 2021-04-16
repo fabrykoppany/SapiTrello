@@ -11,7 +11,7 @@ void clearScreen() {
 char* getUsername() {
     char *username = (char *) malloc(30 * sizeof(int));
 
-    if (username == NULL){
+    if (username == NULL) {
         printf("Error allocating memory!\n");
         return NULL;
     }
@@ -19,7 +19,7 @@ char* getUsername() {
     printf("|->Username: ");
     scanf("%s", username);
 
-    while (!checkSpecialCharacters(username)){
+    while (!checkSpecialCharacters(username)) {
         printf("ERROR: String may not contain special characters. Try another username:");
         scanf("%s", username);
     }

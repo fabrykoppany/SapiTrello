@@ -102,3 +102,17 @@ void setNewCardUser(CARD *card, id_t userId) {
     card->userId = userId;
     addPreviousCollaborator(card, userId);
 }
+
+void changeCardTitle(CARD *card, char *title) {
+    free(card->title);
+    card->title = title;
+}
+
+void changeCardDescription(CARD *card, char *description) {
+    free(card->description);
+    card->description = description;
+}
+
+void changeCardState(CARD *card, enum CardState state) {
+    card->state = state;
+}

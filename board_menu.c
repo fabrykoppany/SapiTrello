@@ -7,7 +7,7 @@
 void renameBoard(USER *user, BOARD *board) {
     char *title = (char *) malloc(255 * sizeof(char));
 
-    if (title == NULL){
+    if (title == NULL) {
         printf("Error allocating memory!\n");
         return;
     }
@@ -245,6 +245,6 @@ void boardMenu(USER *user, BOARD *board) {
         case 6: kickUser(user, board); return;
         case 7: leaveBoard(user, board); return;
         case 0: listBoards(user); return;
-        default: boardMenu(user, board); return;
+        default: printf("|->ERROR: Your choice didn't match any command. Please try again."); getch(); boardMenu(user, board); return;
     }
 }

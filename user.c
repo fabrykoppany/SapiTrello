@@ -8,14 +8,14 @@ bool isCorrectPassword(USER *user, char *password) {
     return strcmp(user->password, password) == 0;
 }
 
-bool checkSpecialCharacters(const char* username){
+bool checkSpecialCharacters(const char* username) {
     char specialCharacters[11] = {92, 47, 58, 42, 63, 34, 60, 62, 124, 46};
 
-    for (int i = 0; i < strlen(username); ++i){
+    for (int i = 0; i < strlen(username); ++i) {
         char compareCharacter = username[i];
 
-        for (int j = 0; j < 10; ++j){
-            if (compareCharacter == specialCharacters[j]){
+        for (int j = 0; j < 10; ++j) {
+            if (compareCharacter == specialCharacters[j]) {
                 return false;
             }
         }

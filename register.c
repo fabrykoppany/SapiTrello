@@ -8,7 +8,7 @@
 char* generatePassword() {
     char *password = (char *) calloc(16, sizeof(char));
 
-    if (password == NULL){
+    if (password == NULL) {
         printf("Error allocating memory!\n");
         return NULL;
     }
@@ -20,7 +20,7 @@ char* generatePassword() {
 
     srand(time(0));
 
-    for (int i = 0; i < 16; ++i){
+    for (int i = 0; i < 16; ++i) {
         int randomChoice = rand() % 4;
 
         switch (randomChoice) {
@@ -37,7 +37,7 @@ char* generatePassword() {
 USER *createNewUser() {
     char *username = getUsername();
 
-    while (userExists(username)){
+    while (userExists(username)) {
         printf("|->ERROR: This username is already taken. Please try something different.\n");
         free(username);
         username = getUsername();
@@ -66,7 +66,7 @@ USER *createNewUser() {
 char *getFirstName() {
     char *firstName = (char *) malloc(30 * sizeof(char));
 
-    if (firstName == NULL){
+    if (firstName == NULL) {
         printf("Error allocating memory!\n");
         return NULL;
     }
@@ -80,7 +80,7 @@ char *getFirstName() {
 char *getSecondName() {
     char *secondName = (char *) malloc(30 * sizeof(char));
 
-    if (secondName == NULL){
+    if (secondName == NULL) {
         printf("Error allocating memory!\n");
         return NULL;
     }

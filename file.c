@@ -4,11 +4,11 @@
 
 #include "file.h"
 
-char* getPrefixedFilename(const char *directory, char *filename){
+char* getPrefixedFilename(const char *directory, char *filename) {
     int length = strlen(directory) + strlen(filename) + strlen("/.bin");
     char *fileName = (char *) malloc((length + 1) * sizeof(int));
 
-    if (fileName == NULL){
+    if (fileName == NULL) {
         printf("Error allocating memory!\n");
         return NULL;
     }

@@ -7,7 +7,7 @@
 char* getUsernameLogin() {
     char *username = (char *) malloc(30 * sizeof(int));
 
-    if (username == NULL){
+    if (username == NULL) {
         printf("Error allocating memory!\n");
         return NULL;
     }
@@ -15,7 +15,7 @@ char* getUsernameLogin() {
     printf("|->Username: ");
     scanf("%s", username);
 
-    while (!checkSpecialCharacters(username)){
+    while (!checkSpecialCharacters(username)) {
         printf("ERROR: String may not contain special characters Try another username:");
         scanf("%s", username);
     }
@@ -26,7 +26,7 @@ char* getUsernameLogin() {
 char *getPassword() {
     char *password = (char *) malloc(16 * sizeof(char));
 
-    if (password == NULL){
+    if (password == NULL) {
         printf("Error allocating memory!!!\n");
         return NULL;
     }
@@ -45,7 +45,7 @@ void loginMenu() {
 
     char *username = getUsernameLogin();
 
-    while (!userExists(username)){
+    while (!userExists(username)) {
         printf("|->ERROR: No such user. Please try again!\n");
         free(username);
         username = getUsernameLogin();
