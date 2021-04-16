@@ -37,6 +37,7 @@ void listBoards(USER *user) {
 
     printf("Which board would you like to browse to?\n\n");
 
+    // Print all boards available to the user.
     for (size_t i = 0; i < user->boards.count; ++i) {
         BOARD *board = loadBoard(user->boards.ids[i]);
 
@@ -51,11 +52,13 @@ void listBoards(USER *user) {
     int choice;
     scanf("%i", &choice);
 
+    // The user would like to head back.
     if (choice == 0 || choice > user->boards.count) {
         userMenu(user);
         return;
     }
 
+    // Load the board into memory and browse into it.
     BOARD *board = loadBoard(user->boards.ids[choice - 1]);
     boardMenu(user, board);
     freeBoard(board);

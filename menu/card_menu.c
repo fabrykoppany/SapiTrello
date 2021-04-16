@@ -18,6 +18,7 @@ void browseCards(USER *user, BOARD *board) {
 
     printf("Which card would you like to open?\n\n");
 
+    // Print all cards available on this board.
     for (size_t i = 0; i < board->cards.count; ++i) {
         CARD *card = board->cards.cards[i];
 
@@ -32,6 +33,7 @@ void browseCards(USER *user, BOARD *board) {
     scanf("%i", &choice);
 
     if (choice == 0 || choice > board->cards.count) {
+        // The user would like to exit this menu.
         boardMenu(user, board);
         return;
     }
@@ -50,6 +52,7 @@ void browseCardsWithState(USER *user, BOARD *board, enum CardState state) {
         CARD *card = board->cards.cards[i];
 
         if (card->state == state) {
+            // We're interested in this card, so print it!
             printf("|->%llu. ", ++index);
             printShortCard(card);
             printf("\n");
@@ -71,6 +74,7 @@ void browseCardsWithState(USER *user, BOARD *board, enum CardState state) {
     scanf("%i", &choice);
 
     if (choice == 0 || choice > index) {
+        // The user would like to exit this menu.
         boardMenu(user, board);
         return;
     }
@@ -81,12 +85,14 @@ void browseCardsWithState(USER *user, BOARD *board, enum CardState state) {
         CARD *card = board->cards.cards[i];
 
         if (card->state != state) {
+            // This is not a board we're interested in.
             continue;
         }
 
         index++;
 
         if (index == choice) {
+            // This is the board we were looking for!
             cardMenu(user, board, card);
             break;
         }
@@ -221,6 +227,7 @@ void deleteCard(USER *user, BOARD *board, CARD *card) {
 }
 
 void printPreviousUsers(CARD *card) {
+    // Print all users who have worked on this board before.
     for (size_t i = 0; i < card->previousUserIds.count; ++i) {
         USER *user = loadUserById(card->previousUserIds.ids[i]);
 
@@ -249,6 +256,7 @@ void transferCard(USER *user, BOARD *board, CARD *card) {
     IdEntry *head = searchForDifferentUsers(board, card->userId);
 
     if (head == NULL) {
+        // There are no other users in this board who we could transfer this card to.
         printf("Sorry, but there's nobody you could transfer ownership to.\n");
         printf("\nPress any key to go back...\n");
         getch();
@@ -258,20 +266,24 @@ void transferCard(USER *user, BOARD *board, CARD *card) {
 
     printf("Which user would you like to transfer this card to?\n\n");
 
+    // Print all users, beginning from index 2 (as we have 2 other options already)
     printSoughtUsers(head, 2);
 
-    printf("|->1. Nobody. I want this card to be orphaned.\n");
-    printf("|->0. Nobody, I don't want to change anything.\n");
+    printf("1. Nobody. I want this card to be orphaned.\n");
+    printf("0. Nobody, I don't want to change anything.\n");
 
     int choice;
     scanf("%d", &choice);
 
     if (choice == 1) {
+        // The user would like to orphan this card.
         removeUserFromCard(card);
     } else if (choice != 0) {
+        // The user would like to assign this specific user to the card.
         id_t userId = getIdFromList(head, choice - 2);
 
         if (userId != INVALID_ID) {
+            // This user exists, so we'll assign them to this card.
             setNewCardUser(card, userId);
             saveBoard(board);
         }
@@ -322,10 +334,14 @@ void takeCardOver(USER *user, BOARD *board, CARD *card) {
 
 void decideJoinOrLeave(USER *user, BOARD *board, CARD *card) {
     if (card->userId == user->id) {
+        // The user is already the owner of this card, so he wants to leave.
         abandonCard(user, board, card);
     } else if (card->userId == INVALID_ID) {
+        // The card does not have any user, so the user wants to assign themselves.
         takeCardOver(user, board, card);
     } else {
+        // The user cannot do anything at the moment with this card.
+        // Move them back to the board menu.
         boardMenu(user, board);
     }
 }

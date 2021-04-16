@@ -13,6 +13,7 @@ char *getBoardFilename(id_t id) {
 }
 
 bool boardExists(id_t id) {
+    // Our board exists if the file exists.
     char *filename = getBoardFilename(id);
     bool result = fileExists(filename);
 

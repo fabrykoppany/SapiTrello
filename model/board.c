@@ -42,6 +42,7 @@ bool removeCardFromBoard(BOARD *board, CARD *card) {
     bool removed = removeFromCardArray(&(board->cards), card) && saveBoard(board);
 
     if (removed) {
+        // If we could remove the card, we must deallocate its memory.
         freeCard(card);
     }
 

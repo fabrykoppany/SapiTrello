@@ -34,6 +34,8 @@ bool addBoardToUser(USER *user, BOARD *board);
 bool removeBoardFromUser(USER *user, BOARD *board);
 bool isSameUser(USER *a, USER *b);
 
+USER *createUser(char *username, char *password, char *firstName, char *secondName);
+
 void printShortUser(USER *user);
 void freeUser(USER *user);
 

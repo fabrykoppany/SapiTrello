@@ -61,8 +61,10 @@ bool saveGlobalDatabase() {
 
 bool addUserToMap(char *username) {
     if (globalDatabase.userCount == 0) {
+        // We don't have any users yet, so create a new array.
         globalDatabase.userMap = (char **) malloc(sizeof(char *));
     } else {
+        // Add one more capacity to this array.
         globalDatabase.userMap = (char **) realloc(globalDatabase.userMap, (globalDatabase.userCount + 1) * sizeof(char *));
     }
 
@@ -71,6 +73,7 @@ bool addUserToMap(char *username) {
         return false;
     }
 
+    // Add our new user to the user map.
     globalDatabase.userMap[globalDatabase.userCount] = username;
     return true;
 }

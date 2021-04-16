@@ -20,6 +20,7 @@ void renameBoard(USER *user, BOARD *board) {
     scanf(" %[^\n]", title);
 
     if (strcasecmp(title, "exit") == 0) {
+        // The user would like to exit this menu.
         free(title);
         boardMenu(user, board);
         return;
@@ -28,6 +29,7 @@ void renameBoard(USER *user, BOARD *board) {
     title = reallocateBuffer(title);
 
     if (!changeBoardName(board, title)) {
+        // We failed to change the board name!
         printf("Could not change board name!\n");
         getch();
         return;
@@ -37,6 +39,7 @@ void renameBoard(USER *user, BOARD *board) {
 }
 
 void printBoardUsers(BOARD *board) {
+    // Print all users from the board.
     for (size_t i = 0; i < board->users.count; ++i) {
         USER *user = loadUserById(board->users.ids[i]);
 
@@ -50,6 +53,7 @@ void printBoardUsers(BOARD *board) {
 }
 
 void printSoughtUsers(IdEntry *head, id_t startIndex) {
+    // Walk through the entire linked list and print all users.
     IdEntry *p = head;
     id_t id = startIndex;
 
@@ -145,6 +149,7 @@ void inviteUser(USER *user, BOARD *board) {
     printf("Which user would you like to add to this board?\n");
     printf("Users not currently contributing to board:\n");
 
+    // Print all users that are not in the board currently!
     printSoughtUsers(availableUsers, 1);
 
     printf("0. None, head back\n");
@@ -169,10 +174,12 @@ void inviteUser(USER *user, BOARD *board) {
     USER *boardUser = loadUserById(userId);
 
     if (boardUser == NULL) {
+        // We couldn't load the user for some reason.
         printf("Could not load the requested user!\n");
         getch();
         boardMenu(user, board);
     } else if (!addUserToBoard(boardUser, board) || !addBoardToUser(boardUser, board)) {
+        // We couldn't remove the user from the board for some reason.
         printf("Could not remove the requested user from the board.\n");
         getch();
         boardMenu(user, board);
@@ -200,6 +207,7 @@ void leaveBoard(USER *user, BOARD *board) {
         return;
     }
 
+    // Attempt to remove the user from the board and vice versa.
     if (!removeUserFromBoard(user, board) || !removeBoardFromUser(user, board)) {
         printf("Could not leave board!\n");
         getch();
