@@ -15,7 +15,6 @@ enum CardState {
 };
 
 typedef struct {
-    id_t id;
     char *title;
     char *description;
     enum CardState state;
@@ -29,13 +28,17 @@ typedef struct {
 
 #include "file.h"
 
-CARD *readCardFromFile(FILE *file, id_t id);
+CARD *readCardFromFile(FILE *file);
 void writeCardToFile(FILE *file, CARD *card);
-CARD *createNewCard(id_t id, id_t userId, char *title, char *description);
+CARD *createNewCard(id_t userId, char *title, char *description);
 void printCardUser(CARD *card);
 void printShortCard(CARD *card);
 const char *cardStateAsString(enum CardState state);
 const char *getCardProgress(CARD *card);
 void freeCard(CARD *card);
+
+bool addPreviousCollaborator(CARD *card, id_t userId);
+void removeUserFromCard(CARD *card);
+void setNewCardUser(CARD *card, id_t userId);
 
 #endif //PROJECT_01_CARD_H

@@ -29,12 +29,23 @@ BOARD *createNewBoard(char *name, USER *user) {
 }
 
 bool changeBoardName(BOARD *board, char *name) {
+    free(board->name);
     board->name = name;
     return saveBoard(board);
 }
 
 bool addCardToBoard(BOARD *board, CARD *card) {
     return addToCardArray(&(board->cards), card) && saveBoard(board);
+}
+
+bool removeCardFromBoard(BOARD *board, CARD *card) {
+    bool removed = removeFromCardArray(&(board->cards), card) && saveBoard(board);
+
+    if (removed) {
+        freeCard(card);
+    }
+
+    return removed;
 }
 
 void freeBoard(BOARD *board) {

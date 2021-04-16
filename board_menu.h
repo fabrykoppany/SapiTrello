@@ -16,7 +16,7 @@ void renameBoard(USER *user, BOARD *board);
 void boardMenu(USER *user, BOARD *board);
 void boardUsers(USER *user, BOARD *board);
 void printBoardUsers(BOARD *board);
-void printSoughtUsers(IdEntry *head);
+void printSoughtUsers(IdEntry *head, id_t startIndex);
 void leaveBoard(USER *user, BOARD *board);
 void kickUser(USER *user, BOARD *board);
 void inviteUser(USER *user, BOARD *board);

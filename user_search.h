@@ -19,6 +19,7 @@ typedef struct IdEntry {
 IdEntry *addIdToEntryList(IdEntry *tail, id_t id);
 void freeIdEntryList(IdEntry *head);
 IdEntry *searchForUsersNotInBoard(BOARD *board);
+IdEntry *searchForDifferentUsers(BOARD *board, id_t ownId);
 id_t getIdFromList(IdEntry *head, size_t index);
 
 #endif //PROJECT_01_USER_SEARCH_H

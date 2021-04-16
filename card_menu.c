@@ -65,7 +65,7 @@ void createCard(USER *user, BOARD *board) {
     scanf(" %[^\n]", description);
     description = reallocateBuffer(description);
 
-    CARD *card = createNewCard(getNextCardId(board), user->id, title, description);
+    CARD *card = createNewCard(user->id, title, description);
     addCardToBoard(board, card);
     cardMenu(user, board, card);
 }
@@ -151,15 +151,89 @@ void changeDescription(USER *user, BOARD *board, CARD *card) {
 }
 
 void deleteCard(USER *user, BOARD *board, CARD *card) {
-    // DANIEL
+    clearScreen();
+    printf("Are you sure you would like to delete this card?\n");
+    printf("This decision is IRREVERSIBLE and cannot be changed!\n\n");
+    printf("1. Yes, delete this card forever!\n");
+    printf("0. No, let me work on it, please.\n");
+    printf("Please type in your choice followed by an Enter: ");
+
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        if (!removeCardFromBoard(board, card)) {
+            printf("Could not remove board!\n");
+            printf("Press any key to continue...");
+            getch();
+        }
+
+        browseCards(user, board);
+        return;
+    }
+
+    cardMenu(user, board, card);
+}
+
+void printPreviousUsers(CARD *card) {
+    for (size_t i = 0; i < card->previousUserIds.count; ++i) {
+        USER *user = loadUserById(card->previousUserIds.ids[i]);
+
+        if (user != NULL) {
+            printf("%llu. ", i + 1);
+            printShortUser(user);
+            printf("\n");
+            freeUser(user);
+        }
+    }
 }
 
 void listPreviousUsers(USER *user, BOARD *board, CARD *card) {
-    // DANIEL
+    clearScreen();
+    printf("The following users have helped with this task:\n");
+
+    printPreviousUsers(card);
+
+    printf("\nPress any key to go back...\n");
+    getch();
+    cardMenu(user, board, card);
 }
 
 void transferCard(USER *user, BOARD *board, CARD *card) {
-    // DANIEL
+    clearScreen();
+    IdEntry *head = searchForDifferentUsers(board, card->userId);
+
+    if (head == NULL) {
+        printf("Sorry, but there's nobody you could transfer ownership to.\n");
+        printf("\nPress any key to go back...\n");
+        getch();
+        cardMenu(user, board, card);
+        return;
+    }
+
+    printf("Which user would you like to transfer this card to?\n\n");
+
+    printSoughtUsers(head, 2);
+
+    printf("1. Nobody. I want this card to be orphaned.\n");
+    printf("0. Nobody, I don't want to change anything.\n");
+
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        removeUserFromCard(card);
+    } else if (choice != 0) {
+        id_t userId = getIdFromList(head, choice - 2);
+
+        if (userId != INVALID_ID) {
+            setNewCardUser(card, userId);
+            saveBoard(board);
+        }
+    }
+
+    freeIdEntryList(head);
+    cardMenu(user, board, card);
 }
 
 void abandonCard(USER *user, BOARD *board, CARD *card) {
@@ -186,14 +260,29 @@ void abandonCard(USER *user, BOARD *board, CARD *card) {
 }
 
 void takeCardOver(USER *user, BOARD *board, CARD *card) {
-    // DANIEL
+    printf("Would you like to transfer ownership of this card over to yourself?\n\n");
+    printf("1. Yes!\n");
+    printf("0. No.\n");
+    printf("Please type in your choice followed by an Enter: ");
+
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        setNewCardUser(card, user->id);
+        saveBoard(board);
+    }
+
+    cardMenu(user, board, card);
 }
 
 void decideJoinOrLeave(USER *user, BOARD *board, CARD *card) {
     if (card->userId == user->id) {
         abandonCard(user, board, card);
-    } else if (card->userId != INVALID_ID) {
+    } else if (card->userId == INVALID_ID) {
         takeCardOver(user, board, card);
+    } else {
+        boardMenu(user, board);
     }
 }
 
@@ -201,7 +290,7 @@ void cardMenu(USER *user, BOARD *board, CARD *card) {
     clearScreen();
 
     printf("====\n");
-    printf("CARD\n");;
+    printf("CARD\n");
     printf("====\n");
     printf("-- %s -- \n", card->title);
     printf("-- %s --\n", getCardProgress(card));
@@ -229,11 +318,12 @@ void cardMenu(USER *user, BOARD *board, CARD *card) {
 
     if (card->userId == user->id) {
         printf("7. Abandon card\n");
-    } else if (card->userId != INVALID_ID) {
+    } else if (card->userId == INVALID_ID) {
         printf("7. Take card over\n");
     }
 
     printf("0. Back to board\n");
+    printf("Please type in your choice followed by an Enter: ");
 
     int choice;
     scanf("%i", &choice);

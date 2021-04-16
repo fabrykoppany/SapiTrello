@@ -49,15 +49,15 @@ void printBoardUsers(BOARD *board) {
     }
 }
 
-void printSoughtUsers(IdEntry *head) {
+void printSoughtUsers(IdEntry *head, id_t startIndex) {
     IdEntry *p = head;
-    id_t id = 0;
+    id_t id = startIndex;
 
     while (p != NULL) {
         USER *user = loadUserById(p->id);
 
         if (user != NULL) {
-            printf("%u. ", ++id);
+            printf("%u. ", id++);
             printShortUser(user);
             printf("\n");
             freeUser(user);
@@ -145,7 +145,7 @@ void inviteUser(USER *user, BOARD *board) {
     printf("Which user would you like to add to this board?\n");
     printf("Users not currently contributing to board:\n");
 
-    printSoughtUsers(availableUsers);
+    printSoughtUsers(availableUsers, 1);
 
     printf("0. None, head back\n");
 
@@ -159,7 +159,6 @@ void inviteUser(USER *user, BOARD *board) {
     }
 
     id_t userId = getIdFromList(availableUsers, choice - 1);
-    printf("user id: %u\n", userId);
     freeIdEntryList(availableUsers);
 
     if (userId == INVALID_ID) {
@@ -167,7 +166,6 @@ void inviteUser(USER *user, BOARD *board) {
         return;
     }
 
-    printf("User id: %u\n", userId);
     USER *boardUser = loadUserById(userId);
 
     if (boardUser == NULL) {
@@ -191,7 +189,7 @@ void leaveBoard(USER *user, BOARD *board) {
     printf("You are about to leave the following board:\n");
     printf("- %s\n", board->name);
     printf("\nThis may be a permanent decision.\nAre you sure you want to leave this board?\n\n");
-    printf("1. Yes, leave the group\n");
+    printf("1. Yes, leave the board\n");
     printf("0. No, head back\n");
 
     int choice;

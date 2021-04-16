@@ -21,7 +21,7 @@ bool readCardArrayFromFile(FILE *file, card_array_t *array) {
     }
 
     for (size_t i = 0; i < array->count; ++i) {
-        CARD *card = readCardFromFile(file, i);
+        CARD *card = readCardFromFile(file);
 
         if (card != NULL) {
             array->cards[i] = card;

@@ -5,14 +5,13 @@
 #include "card.h"
 #include "user_db.h"
 
-CARD *readCardFromFile(FILE *file, id_t id) {
+CARD *readCardFromFile(FILE *file) {
     CARD *card = (CARD *) calloc(1, sizeof(CARD));
 
     if (card == NULL) {
         return NULL;
     }
 
-    card->id = id;
     readStringToField(file, &(card->title));
     readStringToField(file, &(card->description));
     fread(&(card->state), sizeof(enum CardState), 1, file);
@@ -29,14 +28,13 @@ void writeCardToFile(FILE *file, CARD *card) {
     writeIdArrayToFile(file, &(card->previousUserIds));
 }
 
-CARD *createNewCard(id_t id, id_t userId, char *title, char *description) {
+CARD *createNewCard(id_t userId, char *title, char *description) {
     CARD *card = (CARD *) calloc(1, sizeof(CARD));
 
     if (card == NULL) {
         return NULL;
     }
 
-    card->id = id;
     card->userId = userId;
     card->title = title;
     card->description = description;
@@ -90,4 +88,17 @@ void freeCard(CARD *card) {
     free(card->description);
     freeIdArray(card->previousUserIds);
     free(card);
+}
+
+bool addPreviousCollaborator(CARD *card, id_t userId) {
+    return !idArrayContainsElement(&(card->previousUserIds), userId) && addToIdArray(&(card->previousUserIds), userId);
+}
+
+void removeUserFromCard(CARD *card) {
+    card->userId = INVALID_ID;
+}
+
+void setNewCardUser(CARD *card, id_t userId) {
+    card->userId = userId;
+    addPreviousCollaborator(card, userId);
 }

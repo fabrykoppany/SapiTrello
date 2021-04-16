@@ -23,6 +23,7 @@ char* getPrefixedFilename(const char *directory, char *filename){
 
 void writeStringToFile(FILE *file, char *str) {
     size_t length = strlen(str);
+
     fwrite(&length, sizeof(size_t), 1, file);
     fwrite(str, sizeof(char), length, file);
 }

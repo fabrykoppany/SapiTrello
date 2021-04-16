@@ -51,6 +51,23 @@ IdEntry *searchForUsersNotInBoard(BOARD *board) {
     return head;
 }
 
+IdEntry *searchForDifferentUsers(BOARD *board, id_t ownId) {
+    IdEntry *head = NULL;
+    IdEntry *tail = NULL;
+
+    for (size_t i = 0; i < board->users.count; ++i) {
+        if (i != ownId) {
+            tail = addIdToEntryList(tail, i);
+
+            if (head == NULL) {
+                head = tail;
+            }
+        }
+    }
+
+    return head;
+}
+
 id_t getIdFromList(IdEntry *head, size_t index) {
     IdEntry *p = head;
 
