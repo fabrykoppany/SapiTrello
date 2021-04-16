@@ -189,8 +189,8 @@ void leaveBoard(USER *user, BOARD *board) {
     printf("You are about to leave the following board:\n");
     printf("- %s\n", board->name);
     printf("\nThis may be a permanent decision.\nAre you sure you want to leave this board?\n\n");
-    printf("1. Yes, leave the board\n");
-    printf("0. No, head back\n");
+    printf("|->1. Yes, leave the board\n");
+    printf("|->0. No, head back\n");
 
     int choice;
     scanf("%d", &choice);
@@ -219,31 +219,37 @@ void boardMenu(USER *user, BOARD *board) {
     printf("+-------------+\n");
     printf("Card Management\n");
     printf("+-------------+\n");
-    printf("1. Browse cards\n");
-    printf("2. Create new card\n");
+    printf("|->1. Browse all cards\n");
+    printf("|->2. Browse TO DO cards\n");
+    printf("|->3. Browse IN PROGRESS cards\n");
+    printf("|->4. Browse COMPLETE cards\n");
+    printf("|->5. Create new card\n");
     printf("\n");
 
     printf("+-------------+\n");
     printf("User Management\n");
     printf("+-------------+\n");
-    printf("3. List users\n");
-    printf("4. Rename board\n");
-    printf("5. Invite new user\n");
-    printf("6. Kick user from board\n");
-    printf("7. Leave board indefinitely\n\n");
-    printf("0. Back to board list\n");
+    printf("|->6. List users\n");
+    printf("|->7. Rename board\n");
+    printf("|->8. Invite new user\n");
+    printf("|->9. Kick user from board\n");
+    printf("|->10. Leave board indefinitely\n\n");
+    printf("|->0. Back to board list\n");
 
     int choice;
     scanf("%i", &choice);
 
     switch (choice) {
         case 1: browseCards(user, board); return;
-        case 2: createCard(user, board); return;
-        case 3: boardUsers(user, board); return;
-        case 4: renameBoard(user, board); return;
-        case 5: inviteUser(user, board); return;
-        case 6: kickUser(user, board); return;
-        case 7: leaveBoard(user, board); return;
+        case 2: browseCardsWithState(user, board, TO_DO); return;
+        case 3: browseCardsWithState(user, board, DOING); return;
+        case 4: browseCardsWithState(user, board, DONE); return;
+        case 5: createCard(user, board); return;
+        case 6: boardUsers(user, board); return;
+        case 7: renameBoard(user, board); return;
+        case 8: inviteUser(user, board); return;
+        case 9: kickUser(user, board); return;
+        case 10: leaveBoard(user, board); return;
         case 0: listBoards(user); return;
         default: printf("|->ERROR: Your choice didn't match any command. Please try again."); getch(); boardMenu(user, board); return;
     }

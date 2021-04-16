@@ -9,6 +9,7 @@
 #include "board.h"
 #include "card.h"
 
+void browseCardsWithState(USER *user, BOARD *board, enum CardState state);
 void browseCards(USER *user, BOARD *board);
 void createCard(USER *user, BOARD *board);
 void cardMenu(USER *user, BOARD *board, CARD *card);

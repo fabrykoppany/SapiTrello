@@ -21,12 +21,12 @@ void browseCards(USER *user, BOARD *board) {
     for (size_t i = 0; i < board->cards.count; ++i) {
         CARD *card = board->cards.cards[i];
 
-        printf("%llu. ", i + 1);
+        printf("|->%llu. ", i + 1);
         printShortCard(card);
         printf("\n");
     }
 
-    printf("0. Back to menu\n");
+    printf("|->0. Back to menu\n");
 
     int choice;
     scanf("%i", &choice);
@@ -38,6 +38,59 @@ void browseCards(USER *user, BOARD *board) {
 
     CARD *card = board->cards.cards[choice - 1];
     cardMenu(user, board, card);
+}
+
+void browseCardsWithState(USER *user, BOARD *board, enum CardState state) {
+    clearScreen();
+
+    printf("Which %s card would you like to open?\n\n", cardStateAsString(state));
+    size_t index = 0;
+
+    for (size_t i = 0; i < board->cards.count; ++i) {
+        CARD *card = board->cards.cards[i];
+
+        if (card->state == state) {
+            printf("|->%llu. ", ++index);
+            printShortCard(card);
+            printf("\n");
+        }
+    }
+
+    if (index == 0) {
+        clearScreen();
+        printf("There are no %s cards available on this board.\n", cardStateAsString(state));
+        printf("Press any key to go back...\n");
+        getch();
+        boardMenu(user, board);
+        return;
+    }
+
+    printf("|->0. Back to menu\n");
+
+    int choice;
+    scanf("%i", &choice);
+
+    if (choice == 0 || choice > index) {
+        boardMenu(user, board);
+        return;
+    }
+
+    index = 0;
+
+    for (size_t i = 0; i < board->cards.count; ++i) {
+        CARD *card = board->cards.cards[i];
+
+        if (card->state != state) {
+            continue;
+        }
+
+        index++;
+
+        if (index == choice) {
+            cardMenu(user, board, card);
+            break;
+        }
+    }
 }
 
 void createCard(USER *user, BOARD *board) {
@@ -103,10 +156,18 @@ void changeCardStatus(USER *user, BOARD *board, CARD *card) {
     printf("Please choose the card's new status: ");
     scanf("%i", &choice); --choice;
 
-    while (choice == card->state) {
-        printf("This is the card's current state! Please try again: ");
+    while (choice == card->state || card->state > DONE) {
+        if (choice == card->state) {
+            printf("This is the card's current state! Please try again: ");
+        } else {
+            printf("This state does not exist! Please try again: ");
+        }
+
         scanf("%i", &choice);
     }
+
+    changeCardState(card, choice);
+    saveBoard(board);
 
     cardMenu(user, board, card);
 }
@@ -135,8 +196,8 @@ void deleteCard(USER *user, BOARD *board, CARD *card) {
     clearScreen();
     printf("Are you sure you would like to delete this card?\n");
     printf("This decision is IRREVERSIBLE and cannot be changed!\n\n");
-    printf("1. Yes, delete this card forever!\n");
-    printf("0. No, let me work on it, please.\n");
+    printf("|->1. Yes, delete this card forever!\n");
+    printf("|->0. No, let me work on it, please.\n");
     printf("Please type in your choice followed by an Enter: ");
 
     int choice;
@@ -196,8 +257,8 @@ void transferCard(USER *user, BOARD *board, CARD *card) {
 
     printSoughtUsers(head, 2);
 
-    printf("1. Nobody. I want this card to be orphaned.\n");
-    printf("0. Nobody, I don't want to change anything.\n");
+    printf("|->1. Nobody. I want this card to be orphaned.\n");
+    printf("|->0. Nobody, I don't want to change anything.\n");
 
     int choice;
     scanf("%d", &choice);
@@ -239,8 +300,8 @@ void abandonCard(USER *user, BOARD *board, CARD *card) {
 
 void takeCardOver(USER *user, BOARD *board, CARD *card) {
     printf("Would you like to transfer ownership of this card over to yourself?\n\n");
-    printf("1. Yes!\n");
-    printf("0. No.\n");
+    printf("|->1. Yes!\n");
+    printf("|->0. No.\n");
     printf("Please type in your choice followed by an Enter: ");
 
     int choice;
@@ -282,25 +343,25 @@ void cardMenu(USER *user, BOARD *board, CARD *card) {
     printf("+-------------+\n");
     printf("Card Management\n");
     printf("+-------------+\n");
-    printf("1. Rename card\n");
-    printf("2. Change card status\n");
-    printf("3. Change description\n");
-    printf("4. Delete card\n");
+    printf("|->1. Rename card\n");
+    printf("|->2. Change card status\n");
+    printf("|->3. Change description\n");
+    printf("|->4. Delete card\n");
     printf("\n");
 
     printf("+-------------+\n");
     printf("User Management\n");
     printf("+-------------+\n");
-    printf("5. List all collaborators until now\n");
-    printf("6. Transfer card to user\n");
+    printf("|->5. List all collaborators until now\n");
+    printf("|->6. Transfer card to user\n");
 
     if (card->userId == user->id) {
-        printf("7. Abandon card\n");
+        printf("|->7. Abandon card\n");
     } else if (card->userId == INVALID_ID) {
-        printf("7. Take card over\n");
+        printf("|->7. Take card over\n");
     }
 
-    printf("0. Back to board\n");
+    printf("|->0. Back to board\n");
     printf("Please type in your choice followed by an Enter: ");
 
     int choice;

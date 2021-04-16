@@ -41,12 +41,12 @@ void listBoards(USER *user) {
         BOARD *board = loadBoard(user->boards.ids[i]);
 
         if (board != NULL) {
-            printf("%llu. %s\n", i + 1, board->name);
+            printf("|->%llu. %s\n", i + 1, board->name);
             freeBoard(board);
         }
     }
 
-    printf("0. Back to menu\n");
+    printf("|->0. Back to menu\n");
 
     int choice;
     scanf("%i", &choice);
@@ -73,8 +73,6 @@ void userMenu(USER *user) {
     printf("|->0. exit - Logout and go back to the main menu.\n");
     printf("\n################################\n");
     printf("Please type in your choice followed by an Enter: ");
-    printf("Global database users: %u\n", globalDatabase.userCount);
-    printf("Global database boards: %u\n", globalDatabase.boardCount);
 
     scanf("%i", &choice);
 
