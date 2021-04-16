@@ -83,16 +83,6 @@ bool isCardArrayEmpty(card_array_t *array) {
     return array->count == 0;
 }
 
-bool cardArrayContainsElement(card_array_t *array, CARD *card) {
-    for (size_t i = 0; i < array->count; ++i) {
-        if (array->cards[i] == card) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 void freeCardArray(card_array_t array) {
     for (size_t i = 0; i < array.count; ++i) {
         freeCard(array.cards[i]);

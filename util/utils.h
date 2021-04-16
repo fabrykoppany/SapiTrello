@@ -9,5 +9,6 @@
 #include <string.h>
 
 char *reallocateBuffer(char *buffer);
+void clearScreen();
 
 #endif //PROJECT_01_UTILS_H

@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "file.h"
+#include "../util/file.h"
 
 #define GLOBAL_DB_FILENAME "global_db.bin"
 

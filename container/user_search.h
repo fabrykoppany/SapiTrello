@@ -5,16 +5,17 @@
 #ifndef PROJECT_01_USER_SEARCH_H
 #define PROJECT_01_USER_SEARCH_H
 
-#include "types.h"
+#include "../util/types.h"
 
 typedef struct IdEntry {
     id_t id;
     struct IdEntry *next;
 } IdEntry;
 
-#include "board.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+#include "../model/board.h"
 
 IdEntry *addIdToEntryList(IdEntry *tail, id_t id);
 void freeIdEntryList(IdEntry *head);

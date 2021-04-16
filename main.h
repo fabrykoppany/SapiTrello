@@ -3,11 +3,10 @@
 
 #include <stdio.h>
 
-#include "user.h"
-#include "register.h"
-#include "file.h"
-#include "ui.h"
-#include "global_db.h"
+#include "model/user.h"
+#include "menu/register_menu.h"
+#include "util/file.h"
+#include "db/global_db.h"
 
 void mainMenu();
 

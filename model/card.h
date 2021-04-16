@@ -5,8 +5,8 @@
 #ifndef PROJECT_01_CARD_H
 #define PROJECT_01_CARD_H
 
-#include "types.h"
-#include "id_array.h"
+#include "../util/types.h"
+#include "../container/id_array.h"
 
 enum CardState {
     TO_DO,
@@ -26,7 +26,7 @@ typedef struct {
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "file.h"
+#include "../util/file.h"
 
 CARD *readCardFromFile(FILE *file);
 void writeCardToFile(FILE *file, CARD *card);

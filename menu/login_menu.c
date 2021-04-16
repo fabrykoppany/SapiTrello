@@ -2,9 +2,9 @@
 // Created by koppa on 2021. 04. 05..
 //
 
-#include "login.h"
+#include "login_menu.h"
 
-char* getUsernameLogin() {
+char *getUsernameLogin() {
     char *username = (char *) malloc(30 * sizeof(int));
 
     if (username == NULL) {

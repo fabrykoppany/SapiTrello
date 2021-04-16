@@ -5,8 +5,8 @@
 #ifndef PROJECT_01_USER_H
 #define PROJECT_01_USER_H
 
-#include "types.h"
-#include "id_array.h"
+#include "../util/types.h"
+#include "../container/id_array.h"
 
 typedef struct USER {
     id_t id;
@@ -24,8 +24,8 @@ typedef struct USER {
 
 #include "board.h"
 
-#include "register.h"
-#include "login.h"
+#include "../menu/register_menu.h"
+#include "../menu/login_menu.h"
 
 bool isCorrectPassword(USER *user, char *password);
 bool checkSpecialCharacters(const char *username);

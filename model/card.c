@@ -3,7 +3,7 @@
 //
 
 #include "card.h"
-#include "user_db.h"
+#include "../db/user_db.h"
 
 CARD *readCardFromFile(FILE *file) {
     CARD *card = (CARD *) calloc(1, sizeof(CARD));

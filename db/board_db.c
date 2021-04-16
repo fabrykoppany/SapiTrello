@@ -71,7 +71,3 @@ BOARD *loadBoard(id_t id) {
     fclose(file);
     return board;
 }
-
-id_t getNextCardId(BOARD *board) {
-    return board->cards.count;
-}

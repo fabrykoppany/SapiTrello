@@ -2,10 +2,28 @@
 // Created by koppa on 2021. 03. 23..
 //
 
-#include "register.h"
-#include "user_db.h"
+#include "register_menu.h"
 
-char* generatePassword() {
+char *getUsername() {
+    char *username = (char *) malloc(30 * sizeof(int));
+
+    if (username == NULL) {
+        printf("Error allocating memory!\n");
+        return NULL;
+    }
+
+    printf("|->Username: ");
+    scanf("%s", username);
+
+    while (!checkSpecialCharacters(username)) {
+        printf("ERROR: String may not contain special characters. Try another username:");
+        scanf("%s", username);
+    }
+
+    return username;
+}
+
+char *generatePassword() {
     char *password = (char *) calloc(16, sizeof(char));
 
     if (password == NULL) {
@@ -43,7 +61,7 @@ USER *createNewUser() {
         username = getUsername();
     }
 
-    USER *newUser = (USER *) malloc(sizeof(USER));
+    USER *newUser = (USER *) calloc(1, sizeof(USER));
 
     if (newUser == NULL) {
         printf("Could not allocate memory!\n");
@@ -55,8 +73,6 @@ USER *createNewUser() {
     newUser->password = generatePassword();
     newUser->firstName = getFirstName();
     newUser->secondName = getSecondName();
-    newUser->boards.count = 0;
-    newUser->boards.ids = NULL;
 
     saveUser(newUser);
 

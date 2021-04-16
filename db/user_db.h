@@ -5,8 +5,8 @@
 #ifndef PROJECT_01_USER_DB_H
 #define PROJECT_01_USER_DB_H
 
-#include "user.h"
-#include "file.h"
+#include "../model/user.h"
+#include "../util/file.h"
 
 char *getUserFilename(char *username);
 bool userExists(char *username);

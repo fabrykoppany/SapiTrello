@@ -6,7 +6,8 @@
 #define PROJECT_01_ID_ARRAY_H
 
 #include <stdio.h>
-#include "types.h"
+
+#include "../util/types.h"
 
 typedef struct id_array_t {
     size_t count;

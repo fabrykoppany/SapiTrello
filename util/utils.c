@@ -7,3 +7,7 @@
 char *reallocateBuffer(char *buffer) {
     return (char *) realloc(buffer, strlen(buffer) + 1);
 }
+
+void clearScreen() {
+    system("cls");
+}

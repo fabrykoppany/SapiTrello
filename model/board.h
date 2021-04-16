@@ -5,9 +5,9 @@
 #ifndef PROJECT_01_BOARD_H
 #define PROJECT_01_BOARD_H
 
-#include "types.h"
-#include "id_array.h"
-#include "card_array.h"
+#include "../util/types.h"
+#include "../container/id_array.h"
+#include "../container/card_array.h"
 
 typedef struct BOARD {
     id_t id;
@@ -22,7 +22,6 @@ bool addUserToBoard(USER *user, BOARD *board);
 bool removeUserFromBoard(USER *user, BOARD *board);
 BOARD *createNewBoard(char *name, USER *user);
 bool changeBoardName(BOARD *board, char *name);
-id_t getNextCardId(BOARD *board);
 bool addCardToBoard(BOARD *board, CARD *card);
 bool removeCardFromBoard(BOARD *board, CARD *card);
 void freeBoard(BOARD *board);

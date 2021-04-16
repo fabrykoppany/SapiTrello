@@ -5,12 +5,12 @@
 #ifndef PROJECT_01_BOARD_MENU_H
 #define PROJECT_01_BOARD_MENU_H
 
-#include "user.h"
-#include "board.h"
 #include "user_menu.h"
 #include "card_menu.h"
-#include "ui.h"
-#include "user_search.h"
+#include "../model/user.h"
+#include "../model/board.h"
+#include "../util/utils.h"
+#include "../container/user_search.h"
 
 void renameBoard(USER *user, BOARD *board);
 void boardMenu(USER *user, BOARD *board);

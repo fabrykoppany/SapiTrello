@@ -5,9 +5,9 @@
 #ifndef PROJECT_01_BOARD_DB_H
 #define PROJECT_01_BOARD_DB_H
 
-#include "file.h"
-#include "id_array.h"
-#include "board.h"
+#include "../util/file.h"
+#include "../container/id_array.h"
+#include "../model/board.h"
 
 char *getBoardFilename(id_t id);
 bool boardExists(id_t id);

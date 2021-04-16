@@ -5,9 +5,9 @@
 #ifndef PROJECT_01_CARD_MENU_H
 #define PROJECT_01_CARD_MENU_H
 
-#include "user.h"
-#include "board.h"
-#include "card.h"
+#include "../model/user.h"
+#include "../model/board.h"
+#include "../model/card.h"
 
 void browseCardsWithState(USER *user, BOARD *board, enum CardState state);
 void browseCards(USER *user, BOARD *board);
