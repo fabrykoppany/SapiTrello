@@ -12,8 +12,13 @@ char *getUsernameLogin() {
         return NULL;
     }
 
-    printf("|->Username: ");
+    printf("|->Username (type exit to quit): ");
     scanf("%s", username);
+
+    if (strcasecmp(username, "exit") == 0) {
+        free(username);
+        return NULL;
+    }
 
     while (!checkSpecialCharacters(username)) {
         printf("ERROR: String may not contain special characters Try another username:");
@@ -41,9 +46,13 @@ void loginMenu() {
     clearScreen();
 
     printf("LOGIN\n\n");
-    int choice;
 
     char *username = getUsernameLogin();
+
+    if (username == NULL) {
+        mainMenu();
+        return;
+    }
 
     while (!userExists(username)) {
         printf("|->ERROR: No such user. Please try again!\n");
